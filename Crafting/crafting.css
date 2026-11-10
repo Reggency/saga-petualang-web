@@ -1,0 +1,432 @@
+/* ==========================================================================
+   STYLE MEJA PENEMPAAN LEGENDA (CRAFTING SYSTEM) - FULL WIDTH LAYOUT
+   ========================================================================== */
+
+[hidden] { display: none !important; }
+.craft-tabs-navigation button { font: inherit; cursor: pointer; }
+.craft-tabs-navigation { flex-wrap: wrap; }
+.craft-tabs-navigation .btn-tab { min-width: 140px; min-height: 42px; height: auto; padding: 8px 12px; }
+.craft-goods-panel { width: 100%; }
+.btn-craft-card:disabled { opacity: 0.65; cursor: default; }
+.craft-note, .enhance-info { color: #eadfc2; font-size: 0.85rem; }
+.enhance-info { margin: 12px 0; line-height: 1.6; }
+.conversion-quantity { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+.conversion-quantity input { width: 100px; padding: 8px; border: 1px solid #5a4d35; border-radius: 5px; background: #11100e; color: #fff; }
+#craft-status { margin-top: 18px; color: #eadfc2; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0b0c10;
+    color: #c5a880;
+    background-image: linear-gradient(rgba(11, 12, 16, 0.95), rgba(22,21,18, 0.95)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.craft-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    background: rgba(17,16,14, 0.85);
+    border: 2px solid #3a2f1d;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(197, 168, 128, 0.05);
+    padding: 25px;
+    overflow: hidden;
+}
+
+/* HEADER STYLE WITH RELATIVE POSITION FOR BACK BUTTON */
+.craft-header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px dashed #3a2f1d;
+    padding-bottom: 20px;
+    position: relative; /* Menjadi patokan posisi tombol kembali */
+}
+
+.craft-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: #ffca28;
+    text-shadow: 0 0 10px rgba(255, 202, 40, 0.3);
+    letter-spacing: 2px;
+    padding: 0 160px; /* Memberi ruang di kiri-kanan agar teks h1 tidak bertabrakan dengan tombol */
+}
+
+.craft-header p {
+    font-size: 0.95rem;
+    color: #c4a757;
+    margin-top: 5px;
+}
+
+/* TOMBOL KEMBALI KOTA DI POJOK KIRI ATAS HEADER */
+.btn-leave-craft {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background: #7a2020;
+    color: #fff;
+    border: 1px solid #a83232;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+}
+
+.btn-leave-craft:hover {
+    background: #a83232;
+    box-shadow: 0 0 12px rgba(168, 50, 50, 0.6);
+    transform: translateY(-1px);
+}
+
+/* TABS CLASS NAVIGATION */
+.craft-tabs-navigation {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    background: #100f0d;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #1e1d19;
+    align-items: center; /* Memastikan semua tab sejajar lurus di tengah */
+}
+
+.btn-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    
+    /* PENGUNCI UKURAN RAMPING DAN TIPIS */
+    height: 42px; 
+    padding: 0 12px; /* Mengubah padding vertikal menjadi 0 agar dikunci oleh height */
+    
+    font-family: 'Metamorphous', cursive;
+    font-size: 1rem;
+    color: #c4a757;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-tab:hover {
+    background: rgba(197, 168, 128, 0.1);
+    color: #fff;
+}
+
+.btn-tab.active {
+    background: #c5a880;
+    color: #0b0c10;
+    font-weight: bold;
+    /* Box-shadow disesuaikan agar tidak menambah dimensi fisik tinggi tombol */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2), 0 0 15px rgba(197, 168, 128, 0.4);
+}
+
+.enhance-info {
+    font-size: 0.95rem;
+    color: #eadfc2;
+    background: rgba(201,175,103, 0.08);
+    border: 1px solid rgba(201,175,103, 0.25);
+    padding: 12px;
+    border-radius: 12px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* LAYOUT UTAMA: FULL WIDTH TANPA GRID SIDEBAR */
+.craft-layout {
+    display: block;
+    width: 100%;
+}
+
+/* PANEL BARANG UTAMA (MENGIKUTI LEBAR PENUH LAYOUT) */
+.craft-goods-panel {
+    background: #111217;
+    border: 1px solid #1e1d19;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 500px;
+    width: 100%;
+}
+
+/* BOOTH BOX (WADAH KATEGORI) */
+.craft-booth {
+    background: rgba(23,22,19, 0.4);
+    border: 1px solid #1e1d19;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px; /* Menyesuaikan dari inline HTML */
+}
+
+.craft-booth h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #fbbf24; /* Menyesuaikan warna kuning emas dari inline HTML */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #6d6245; /* Tambahan garis bawah dari inline HTML */
+    padding-bottom: 5px;
+}
+
+/* ITEMS GRID (KOTAK-KOTAK SENJATA OTOMATIS MENYESUAIKAN PROPORSIONAL LAYAR) */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Disesuaikan ke 250px sesuai inline HTML */
+    gap: 15px;
+}
+
+/* TOMBOL KARTU CRAFTING */
+.btn-craft-card {
+    background: linear-gradient(180deg, rgba(21,20,18,0.95), rgba(14,14,12,0.95));
+    border: 1px solid rgba(40,38,32,0.6);
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+}
+
+.btn-craft-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(255,202,40,0.95);
+    box-shadow: 0 10px 30px rgba(9,9,7,0.6), 0 2px 8px rgba(255,202,40,0.06) inset;
+}
+
+.btn-craft-card .item-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.btn-craft-card .item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.btn-craft-card .item-meta {
+    display:flex;
+    gap:8px;
+    align-items:center;
+    color:#eadfc2;
+    font-size:0.86rem;
+}
+
+/* Kategori Efek Berdasarkan Atribut */
+.btn-craft-card .item-effect {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Pengecekan warna teks dinamis yang sebelumnya diatur lewat inline HTML */
+.btn-craft-card[onclick*="'atk'"] .item-effect,
+.btn-craft-card .item-effect {
+    color: #c7ac61; /* Hijau Terang untuk ATK */
+}
+
+.btn-craft-card[onclick*="'def'"] .item-effect {
+    color: #c9af67; /* Biru Terang untuk DEF */
+}
+
+.btn-craft-card[onclick*="'hp'"] .item-effect {
+    color: #f472b6; /* Pink Terang untuk HP */
+}
+
+.btn-craft-card[onclick*="'dodge'"] .item-effect {
+    color: #decea2; /* Ungu Terang untuk Dodge */
+}
+
+/* Biaya Material Card */
+.btn-craft-card .item-cost {
+    font-size: 0.85rem;
+    color: #eadfc2; /* Warna teks abu muda dari inline HTML */
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: 4px;
+}
+
+.material-pill {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.03);
+    color:#f5f1e4;
+    font-size:0.82rem;
+}
+.material-pill i{ color:#ffca28; font-size:0.9rem }
+
+/* Materials container: horizontal, wraps, and has subtle spacing */
+.materials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.material-pill {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 6px 10px;
+    align-items: center;
+    gap: 8px;
+}
+
+.material-pill.insufficient {
+    border-color: rgba(248,113,113,0.5);
+    background: rgba(248,113,113,0.08);
+}
+
+.material-pill .mat-icon {
+    width: 28px; height: 28px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius: 6px; background: rgba(0,0,0,0.25); color: #ffd54a; font-size:14px;
+}
+
+.material-pill .mat-text { display:inline-block; max-width: 160px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+.material-pill .mat-count {
+    background: #111217; color:#ffca28; padding:2px 6px; border-radius:12px; margin-left:8px; font-weight:700; font-size:0.78rem;
+}
+
+.material-pill.currency {
+    background: linear-gradient(180deg, rgba(255, 253, 231, 0.12), rgba(64, 46, 9, 0.15));
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.material-pill.currency .mat-icon {
+    background: rgba(255, 202, 40, 0.16);
+    color: #fcd34d;
+}
+
+.material-pill.currency .mat-count {
+    background: #412f08;
+    color: #fcd34d;
+}
+
+.material-pill .mat-count.insufficient {
+    background: #3f1f1f;
+    color: #f87171;
+    border: 1px solid rgba(248,113,113,0.35);
+}
+
+/* Emphasized small black box used for compact summary (like in screenshot) */
+.cost-box {
+    background: rgba(0,0,0,0.5);
+    color: #f5f1e4;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 8px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Slightly tighter card spacing so content doesn't look stacked */
+.btn-craft-card { padding: 12px; min-height: 100px; }
+.btn-craft-card .item-top { gap: 12px; }
+
+/* KELAS KHUSUS BARANG LEGENDARY */
+.item-legendary-border {
+    border: 1px dashed #ff9800 !important;
+    position: relative;
+    background: linear-gradient(145deg, #151412, #271a10) !important;
+}
+
+.item-legendary-border:hover {
+    border-color: #ff5722 !important;
+    box-shadow: 0 0 12px rgba(255, 87, 34, 0.4) !important;
+}
+
+.item-legendary-border .item-name {
+    color: #f87171 !important; /* Warna merah legendaris BOSS dari inline HTML */
+    text-shadow: 0 0 5px rgba(255, 87, 34, 0.2);
+}
+
+.btn-craft-card.insufficient {
+    border-color: rgba(248, 113, 113, 0.8);
+    box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.2);
+}
+
+.btn-craft-card.insufficient .item-name,
+.btn-craft-card.insufficient .item-effect {
+    color: #f87171;
+}
+
+.item-legendary-border .item-cost {
+    color: #f87171; /* Warna biaya material khusus BOSS dari inline HTML */
+}
+
+/* COLOR UTILITIES (TETAP DIJAGA JIKA JAVASCRIPT MEMBUTUHKANNYA) */
+.color-atk { color: #f44336; }
+.color-def { color: #c2a452; }
+.color-dodge { color: #ba9a41; }
+.color-hp { color: #e91e63; }
+
+/* RESPONSIVE LAYAR HP / SMALL DEVICES */
+@media (max-width: 850px) {
+    .craft-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .craft-header h1 {
+        padding: 0;
+        font-size: 1.8rem;
+        order: 2; /* Menaruh Judul di bawah Tombol saat di HP */
+    }
+
+    .craft-header p {
+        order: 3;
+    }
+
+    .btn-leave-craft {
+        position: static; /* Tombol kembali turun normal ke atas judul saat di HP */
+        width: 100%;
+        justify-content: center;
+        order: 1;
+    }
+}
+.game-feature .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 245px), 1fr));
+    gap: 12px;
+}
+.game-feature .recipe-entry { display: flex; flex-direction: column; min-width: 0; }
+.game-feature .recipe-entry .btn-craft-card { flex: 1; width: 100%; }
+.game-feature .btn-craft-card { padding: 12px; justify-content: flex-start; }
+.game-feature .btn-craft-card .item-top { display: flex; align-items: center; justify-content: flex-start; gap: 10px; width: 100%; min-width: 0; }
+.btn-craft-card .item-art { --item-art-size: 64px; }
+.btn-craft-card .item-details { display: flex; flex: 1; flex-direction: column; gap: 4px; min-width: 0; }
+.btn-craft-card .item-details :is(.item-name, .item-effect) { display: block; overflow-wrap: anywhere; white-space: normal; line-height: 1.4; }
+.game-feature .btn-craft-card .item-name { font-size: .9rem; }
+.game-feature .btn-craft-card .materials { gap: 5px; margin-top: 10px; }
+.game-feature .btn-craft-card .material-pill { max-width: 100%; min-width: 0; padding: 4px 6px; border-radius: 6px; font-size: .72rem; }
+.game-feature .btn-craft-card .mat-text { min-width: 0; overflow-wrap: anywhere; white-space: normal; }
+.game-feature .btn-craft-card .mat-count { flex-shrink: 0; }

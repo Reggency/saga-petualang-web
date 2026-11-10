@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohon Keahlian - Saga Petualang</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="../Utama/fonts.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="skill_selection.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+
+<body class="game-ui game-feature">
+    <div class="skill-container ui-shell">
+        <!-- Header -->
+        <div class="skill-header ui-header">
+            <div class="ui-heading"><h1>Pohon Keahlian</h1>
+            <p>Gunakan Poin Keahlian (SP) untuk membuka kemampuan baru yang dahsyat.</p></div>
+            <button id="btn-back" class="btn-leave-skill ui-back">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Arena
+            </button>
+        </div>
+
+        <!-- Main Layout (Sidebar + Content) -->
+        <div class="skill-layout">
+            <!-- Sidebar Info Pemain -->
+            <div class="player-info-panel">
+                <h3 id="player-name">Nama Karakter</h3>
+                <p id="player-class" class="player-class-badge">Kelas Karakter</p>
+                <hr>
+                <div class="info-stat">
+                    <span><i class="fa-solid fa-star"></i> Poin Keahlian (SP)</span>
+                    <strong id="skill-points">0</strong>
+                </div>
+                <div class="info-stat">
+                    <span><i class="fa-solid fa-book-open"></i> Keahlian Terpelajari</span>
+                    <strong id="learned-skills-count">0 / 12</strong>
+                </div>
+                <hr>
+                <h4>Keahlian Terpasang</h4>
+                <div id="equipped-skills-list" class="equipped-skills-grid">
+                    <!-- Slot keahlian aktif akan diisi oleh JS -->
+                    <div class="equipped-slot"><i class="fa-solid fa-question"></i> Kosong</div>
+                    <div class="equipped-slot"><i class="fa-solid fa-question"></i> Kosong</div>
+                    <div class="equipped-slot"><i class="fa-solid fa-question"></i> Kosong</div>
+                </div>
+            </div>
+
+            <!-- Konten Utama (Daftar Skill) -->
+            <div class="skill-tree-panel">
+                <h3 id="skill-tree-title">Memuat Keahlian...</h3>
+                <div id="evolution-panel" class="evolution-panel">
+                    <!-- Evolution UI akan diisi oleh JS -->
+                </div>
+                <div id="skill-list-grid" class="skill-grid">
+                    <!-- Kartu skill akan di-generate oleh JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SweetAlert2 & Custom JS -->
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/boot.js" data-page="skills" data-src="skill_selection.js"></script>
+</body>
+
+</html>

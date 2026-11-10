@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy Lab - Saga Petualang</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="alchemy.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+    <link rel="stylesheet" href="../Shared/journal.css">
+</head>
+<body class="game-ui game-feature">
+    <main class="lab-shell ui-shell">
+        <header class="lab-header ui-header">
+            <a class="back-link ui-back" href="../Utama/Index.html"><span aria-hidden="true">←</span> Kembali ke Kota</a>
+            <span class="brand">SAGA PETUALANG</span>
+            <span id="lab-character" class="character"></span>
+        </header>
+        <section class="lab-intro">
+            <div>
+                <p class="eyebrow">SENI MERACIK RAMUAN</p>
+                <h1>Alchemy Lab</h1>
+                <p>Ubah sari monster menjadi bekal petualangan. Pilih formula, siapkan bahan, lalu nyalakan tungku.</p>
+            </div>
+            <div class="lab-emblem" aria-hidden="true"><svg width="54" height="54" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8h16M27 8v19L14 47a6 6 0 0 0 5 9h26a6 6 0 0 0 5-9L37 27V8M21 39h22M25 47h1M36 45h1"/></svg></div>
+        </section>
+        <section class="supplies" aria-label="Persediaan saat ini">
+            <div><span>Gold</span><strong id="lab-gold">0</strong></div>
+            <div class="hp"><span>Potion Penyembuh</span><strong id="lab-potions">0</strong><small>Memulihkan 50% Max HP</small></div>
+            <div class="mp"><span>Potion Mana</span><strong id="lab-mana-potions">0</strong><small>Memulihkan 50% Max Mana</small></div>
+        </section>
+        <div class="lab-controls">
+            <div><h2>Resep Potion</h2><p>Resep langka menghasilkan lebih banyak Potion yang sama.</p></div>
+            <label>Jenis Potion<select id="potion-filter"><option value="all">Semua</option><option value="hp">Penyembuh</option><option value="potion_mana">Mana</option></select></label>
+            <label>Jumlah racikan<input id="brew-quantity" type="number" min="1" max="99" step="1" value="1" inputmode="numeric"></label>
+        </div>
+        <p id="lab-status" role="status" aria-live="polite">Potion hasil racikan langsung masuk ke stok yang dipakai saat bertempur.</p>
+        <label class="recipe-search">Cari resep Potion<input id="recipe-search" type="search" placeholder="Nama resep atau material"></label>
+        <div id="recipe-list"></div>
+    </main>
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/materials.js"></script>
+    <script src="recipes.js"></script>
+    <script src="alchemy-core.js"></script>
+    <script src="../Crafting/recipes.js"></script>
+    <script src="../Crafting/crafting-core.js"></script>
+    <script src="../Shared/equipment-sets.js"></script>
+    <script src="../Shared/journal-core.js"></script>
+    <script src="../Shared/journal-ui.js"></script>
+    <script src="../Shared/boot.js" data-page="alchemy" data-src="alchemy.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hutan Lindung - Chopping</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="gathering.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+<body class="game-ui game-feature" data-type="chopping">
+
+    <div class="gather-container ui-shell">
+        <header class="gather-header ui-header">
+            <div class="ui-heading"><h1><i class="fa-solid fa-tree"></i> HUTAN KABUT MYSTICAL</h1>
+            <p>Ayunkan kapakmu untuk menebas pohon prasejarah dan tingkatkan level profesimu.</p></div>
+        
+
+            <button class="btn-leave ui-back" onclick="window.location.href='../Utama/Index.html'">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Kota
+            </button>
+        </header>
+
+        <div class="gather-top-bar">
+            
+            <div class="info-box box-profesi">
+                <h3 style="margin: 0; color: #3b82f6; font-size: 1.1rem;"><i class="fa-solid fa-medal"></i> Profesi Tebang</h3>
+                <div class="level-badge" style="background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">Lv. <span id="profesi-level">1</span></div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <div class="exp-container" style="width: 150px; background: #0f172a; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div class="exp-bar" id="profesi-exp-bar" style="height: 100%; background: #3b82f6; width: 0%;"></div>
+                    </div>
+                    <div class="exp-text" style="font-size: 0.8rem; color: #aaa;"><span id="profesi-exp">0</span> / <span id="profesi-max-exp">100</span> EXP</div>
+                </div>
+            </div>
+
+            <div class="info-box box-alat">
+                <h3 style="margin: 0; color: #10b981; font-size: 1.1rem;"><i class="fa-solid fa-screwdriver-wrench"></i> Alat Aktif:</h3>
+                <div class="tool-display" style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-axe tool-icon" style="color: #10b981; font-size: 1.5rem;"></i>
+                    <div class="tool-detail" style="display: flex; flex-direction: column;">
+                        <b id="tool-name" style="color: #fff;">Kapak Berkarat</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <main class="gather-grid" style="width: 100%;">
+            <div class="gather-card tier-forest" id="card-Kayu-Balsa">
+                <div class="req-tag">Butuh Lv. 1</div>
+                <div class="stage-tag">Stage: Forest</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree tree-balsa"></i></div>
+                <h3>Kayu Balsa</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Balsa">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Balsa"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Balsa" onclick="toggleGather('Kayu Balsa', 'chopping')">Mulai Menebang</button>
+            </div>
+
+            <div class="gather-card tier-cave" id="card-Kayu-Pinus">
+                <div class="req-tag">Butuh Lv. 5</div>
+                <div class="stage-tag">Stage: Cave</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree tree-pinus"></i></div>
+                <h3>Kayu Pinus</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Pinus">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Pinus"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Pinus" onclick="toggleGather('Kayu Pinus', 'chopping')">Mulai Menebang</button>
+            </div>
+
+            <div class="gather-card tier-ruins" id="card-Kayu-Oak">
+                <div class="req-tag">Butuh Lv. 10</div>
+                <div class="stage-tag">Stage: Ruins</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree tree-oak"></i></div>
+                <h3>Kayu Ek / Oak</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Oak">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Oak"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Oak" onclick="toggleGather('Kayu Ek / Oak', 'chopping')">Mulai Menebang</button>
+            </div>
+
+            <div class="gather-card tier-tundra" id="card-Kayu-Ironwood">
+                <div class="req-tag">Butuh Lv. 20</div>
+                <div class="stage-tag">Stage: Frost Tundra</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree tree-ironwood"></i></div>
+                <h3>Kayu Besi / Ironwood</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Ironwood">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Ironwood"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Ironwood" onclick="toggleGather('Kayu Besi / Ironwood', 'chopping')">Mulai Menebang</button>
+            </div>
+
+            <div class="gather-card tier-lava" id="card-Kayu-Mahoni">
+                <div class="req-tag">Butuh Lv. 30</div>
+                <div class="stage-tag">Stage: Lava Lair</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree tree-mahoni"></i></div>
+                <h3>Kayu Mahoni</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Mahoni">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Mahoni"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Mahoni" onclick="toggleGather('Kayu Mahoni', 'chopping')">Mulai Menebang</button>
+            </div>
+
+            <div class="gather-card tier-boss" id="card-Kayu-Elderwood">
+                <div class="req-tag bg-red">Butuh Lv. 45</div>
+                <div class="stage-tag tag-boss">BOSS Dragon Lava</div>
+                <div class="icon-zone"><i class="fa-solid fa-tree-burned tree-elder"></i></div>
+                <h3>Kayu Purba / Elderwood</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Kayu-Elderwood">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Kayu-Elderwood"></div></div>
+                <button class="btn-action chopping-btn" id="btn-Kayu-Elderwood" onclick="toggleGather('Kayu Purba / Elderwood', 'chopping')">Mulai Menebang</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/boot.js" data-page="gathering" data-src="gathering.js"></script>
+</body>
+</html>

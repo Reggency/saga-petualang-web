@@ -1,0 +1,143 @@
+:root { color-scheme: dark; --ink: #f2efe2; --muted: #d2bb7e; --gold: #dfbd7f; --border: #292721; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; min-height: 100svh; background: radial-gradient(ellipse at 12% 0%, #1f1d19 0%, transparent 55%), #0c0b0a; color: var(--ink); font-family: 'Poppins', 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+.game-ui.login-page { background:linear-gradient(90deg,#08080840,#08080880),url('../Background/Awal.png') center / cover no-repeat fixed;background-color:#080808; }
+.game-ui.login-page .world-intro { background:linear-gradient(180deg,#08080825,#080808a6); }
+@media(max-width:650px) { .game-ui.login-page { background-position:24% center; } }
+button, input { font: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.login-wrapper { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+.site-header { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { color: var(--ink); display: flex; align-items: center; gap: 13px; text-decoration: none; font-family: 'Cinzel', Georgia, serif; letter-spacing: 2px; font-size: 16px; }
+.brand b { font-weight: 500; color: var(--gold); }
+.brand-mark { width: 39px; height: 43px; display: grid; place-items: center; color: var(--gold); border: 1px solid #766342; border-radius: 12px 12px 19px 19px; font-size: 27px; }
+.header-note { color: var(--muted); font-size: 12px; }
+.gateway { display: grid; grid-template-columns: 1.2fr 1fr; min-height: 630px; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 25px 70px #0005; }
+.world-intro { position: relative; isolation: isolate; padding: 36px 42px 30px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(180deg, #0d0d0baa, #0d0d0b26 35%, #0a0a08ed 100%), url('../Background/forest.jpg') center / cover; border-right: 1px solid var(--border); }
+.world-topline { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2.4px; color: var(--gold); }
+.chapter { font-size: 9px; letter-spacing: 1px; color: #e6dab9; }
+.world-story { padding: 58px 0 40px; }
+.story-divider { display: block; color: var(--gold); font-size: 25px; margin-bottom: 23px; }
+.world-story h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(32px, 3.4vw, 47px); font-weight: 500; line-height: 1.32; letter-spacing: -1px; text-shadow: 0 2px 18px #0008; }
+.world-story h1 em { color: #e7c78e; font-style: normal; }
+.world-story p { font-size: 13px; color: #e9dfc2; max-width: 355px; line-height: 1.9; margin-top: 23px; }
+.world-details { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 32px; color: #d3c298; font-size: 8px; letter-spacing: 1.3px; }
+.world-caption { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: #f0e9d6; font-size: 11px; border-top: 1px solid #c6c4a32e; padding-top: 20px; }
+.world-caption > span:last-child { margin-left: auto; color: #d8c48f; font-size: 10px; }
+.location-dot { width: 6px; height: 6px; border-radius: 50%; background: #d6c28b; }
+.login-box { background: #12110f; padding: 44px clamp(28px, 4.5vw, 64px) 32px; display: flex; flex-direction: column; justify-content: center; }
+.portal-symbol { font-size: 38px; color: var(--gold); line-height: 1; margin-bottom: 24px; }
+.login-box h2 { font-family: 'Cinzel', Georgia, serif; font-weight: 500; font-size: clamp(27px, 2.7vw, 35px); line-height: 1.4; margin: 13px 0 10px; }
+.subtitle { font-size: 13px; color: var(--muted); margin-bottom: 30px; }
+.input-group { margin-bottom: 21px; }
+.input-group label { display: block; font-size: 12px; color: #ece2c8; margin-bottom: 9px; }
+.input-group input { width: 100%; min-height: 49px; padding: 12px 15px; background: #0e0d0b; border: 1px solid #2c2a24; color: var(--ink); border-radius: 8px; font-size: 13px; transition: border-color .18s, box-shadow .18s; }
+.input-group input::placeholder { color: #c4a859; }
+.input-group input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px #dfbd7f16; }
+.input-group small { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+.btn-masuk { display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 50px; padding: 12px 18px; margin-top: 28px; border-radius: 8px; border: 1px solid #efd39c; background: linear-gradient(110deg, #e7c890, #c8a261); color: #1e1d19; font-size: 12px; font-weight: 600; cursor: pointer; transition: transform .18s, filter .18s; }
+.btn-masuk > span:last-child { font-size: 22px; line-height: 1; }
+.btn-masuk:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-masuk:disabled { opacity: .65; cursor: wait; }
+.toggle-form { text-align: center; color: var(--muted); font-size: 11px; margin-top: 22px; }
+.toggle-form button { display: inline; border: 0; background: none; color: var(--gold); font-size: inherit; font-weight: 600; padding: 7px 3px; cursor: pointer; }
+.toggle-form button:hover { text-decoration: underline; }
+.login-note { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 22px; margin-top: 25px; color: #d2bb7e; }
+.login-note > span { color: var(--gold); font-size: 23px; }
+.login-note p { font-family: Georgia, serif; font-style: italic; font-size: 12px; line-height: 1.7; }
+.site-footer { padding: 27px 0; display: flex; justify-content: space-between; gap: 15px; color: #c8ad63; font-size: 9px; letter-spacing: 1px; }
+.site-footer span span { margin: 0 9px; color: #817353; }
+@media (min-width: 1600px) { .login-wrapper { padding-top: 4vh; } }
+@media (max-width: 900px) {
+    .login-wrapper { padding: 0 24px; }
+    .site-header { min-height: 90px; }
+    .gateway { grid-template-columns: 1fr 1fr; }
+    .world-intro { padding: 30px 25px; }
+    .chapter, .world-caption > span:last-child { display: none; }
+    .world-details { gap: 12px; }
+    .login-box { padding: 35px 28px; }
+}
+@media (max-width: 650px) {
+    .login-wrapper { padding: 0 16px; }
+    .site-header { min-height: 78px; }
+    .brand { font-size: 13px; letter-spacing: 1.5px; }
+    .header-note { display: none; }
+    .gateway { grid-template-columns: 1fr; border-radius: 14px; }
+    .world-intro { min-height: 260px; padding: 25px; border-right: 0; border-bottom: 1px solid var(--border); background-position: center 58%; }
+    .world-story { padding: 23px 0 8px; }
+    .story-divider, .world-details, .world-caption, .world-story h1 br:nth-child(2) { display: none; }
+    .world-story h1 { font-size: 28px; }
+    .world-story p { font-size: 12px; margin-top: 13px; }
+    .login-box { padding: 30px 25px; }
+    .portal-symbol { display: none; }
+    .login-box h2 { font-size: 27px; }
+    .login-box h2 br { display: none; }
+    .input-group input { font-size: 16px; }
+    .site-footer { flex-wrap: wrap; font-size: 8px; padding: 22px 3px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+
+/* Fit the gateway into the visible screen without changing authentication. */
+html:has(body.login-page) { height:100%;overflow:hidden; }
+body.game-ui.login-page { height:100dvh;min-height:0;overflow:hidden; }
+.login-page .login-wrapper { height:100%;display:grid;grid-template-rows:clamp(54px,10vh,90px) minmax(0,1fr) 38px;padding:0 clamp(16px,3vw,48px); }
+.login-page .site-header { min-height:0; }
+.login-page .site-footer { min-height:0;padding:10px 0;align-items:center;font-size:8px; }
+.login-page .gateway { min-height:0;height:100%; }
+.login-page .login-box { min-height:0;padding:clamp(18px,3vh,36px) clamp(22px,3vw,48px); }
+.login-page .portal-symbol { font-size:28px;margin-bottom:12px; }
+.login-page .login-box h2 { font-size:clamp(25px,2.5vw,34px);margin:8px 0;line-height:1.25; }
+.login-page .subtitle { margin-bottom:18px; }
+.login-page .input-group { margin-bottom:14px; }
+.login-page .input-group label { margin-bottom:6px; }
+.login-page .input-group input { min-height:44px;padding:10px 12px; }
+.login-page .btn-masuk { min-height:44px;padding:9px 16px;margin-top:16px; }
+.login-page .toggle-form { margin-top:10px; }
+.login-page .login-note { padding-top:14px;margin-top:14px; }
+.login-page .world-intro { min-height:0;padding:clamp(20px,3vh,36px) clamp(22px,3vw,42px); }
+.login-page .world-story { padding:20px 0; }
+.login-page .story-divider { margin-bottom:12px; }
+.login-page .world-story h1 { font-size:clamp(27px,3vw,43px); }
+.login-page .world-story p { margin-top:14px; }
+.login-page .world-details { margin-top:18px; }
+@media(max-height:760px) {
+ .login-page .portal-symbol,.login-page .login-note { display:none; }
+ .login-page .world-details { display:none; }
+ .login-page .world-story p { line-height:1.6; }
+}
+@media(max-width:650px) {
+ .login-page .login-wrapper { grid-template-rows:56px minmax(0,1fr) 30px;padding:0 12px; }
+ .login-page .gateway { grid-template-rows:minmax(0,130px) minmax(0,1fr); }
+ .login-page .world-intro { padding:14px 20px;justify-content:center; }
+ .login-page .world-topline,.login-page .world-story p,.login-page .world-caption { display:none; }
+ .login-page .world-story { padding:0; }
+ .login-page .world-story h1 { font-size:23px;line-height:1.25; }
+ .login-page .world-story h1 br { display:none; }
+ .login-page .login-box { padding:18px 22px; }
+ .login-page .login-box h2 { font-size:25px; }
+ .login-page .site-footer { font-size:7px;letter-spacing:.3px;gap:6px; }
+}
+@media(max-width:650px) and (max-height:740px) {
+ .login-page .gateway { grid-template-rows:minmax(0,1fr); }
+ .login-page .world-intro { display:none; }
+ .login-page .login-box { background:#121210e6; }
+}
+@media(max-height:520px) {
+ .login-page .login-wrapper { grid-template-rows:40px minmax(0,1fr);padding:0 12px 10px; }
+ .login-page .gateway { grid-template-columns:1fr;grid-template-rows:minmax(0,1fr); }
+ .login-page .world-intro,.login-page .site-footer,.login-page .subtitle { display:none; }
+ .login-page .login-box { padding:12px 22px; }
+ .login-page .login-box h2 { font-size:22px;margin:0 0 10px; }
+ .login-page .login-box h2 br { display:none; }
+ .login-page .input-group { margin-bottom:8px; }
+ .login-page .input-group input { min-height:38px;padding:7px 10px; }
+ .login-page .btn-masuk { min-height:38px;margin-top:10px; }
+ .login-page .toggle-form { margin-top:4px; }
+}
+@media(max-height:520px) and (min-width:600px) {
+ .login-page form:not([style*="none"]) { display:grid!important;grid-template-columns:1fr 1fr;gap:4px 12px; }
+ .login-page .btn-masuk,.login-page .toggle-form { grid-column:1 / -1; }
+ .login-page .btn-masuk { margin-top:0; }
+}

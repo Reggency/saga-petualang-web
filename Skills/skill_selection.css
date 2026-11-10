@@ -1,0 +1,232 @@
+/* ==========================================================================
+   STYLE POHON KEAHLIAN (SKILL TREE) - SAGA PETUALANG
+   ========================================================================== */
+
+:root {
+    --bg-main: #141311;
+    --bg-container: #201e1a;
+    --bg-card: #141311;
+    --border-color: #312e28;
+    --text-primary: #f4eede;
+    --text-secondary: #d1ba7b;
+    --accent-gold: #fbbf24;
+    --accent-blue: #c9af67;
+    --accent-green: #c7ac61;
+    --accent-red: #f87171;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+.skill-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-container);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+
+/* HEADER */
+.skill-header {
+    text-align: center;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.skill-header h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-gold);
+    font-size: 2rem;
+}
+
+.skill-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.btn-leave-skill {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #6b6145;
+    color: white;
+    border: 1px solid #b1923e;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-leave-skill:hover {
+    background: #b1923e;
+}
+
+/* LAYOUT */
+.skill-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 25px;
+}
+
+/* SIDEBAR INFO PEMAIN */
+.player-info-panel {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.player-info-panel h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.player-class-badge {
+    display: block;
+    width: fit-content;
+    margin: 5px auto 15px auto;
+    background-color: var(--accent-blue);
+    color: var(--bg-main);
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.player-info-panel hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 15px 0;
+}
+
+.info-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.info-stat span {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-stat strong {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+}
+
+.player-info-panel h4 {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.equipped-skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.equipped-slot {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.equipped-slot.filled {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+/* PANEL SKILL TREE */
+.skill-tree-panel h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 15px;
+    color: var(--accent-gold);
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.skill-card.learnable:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+}
+
+.skill-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skill-icon { font-size: 2rem; color: var(--accent-blue); width: 40px; text-align: center; }
+.skill-name { font-size: 1rem; font-weight: 600; }
+.skill-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.skill-details { font-size: 0.8rem; color: var(--text-secondary); }
+.skill-details span { color: var(--accent-blue); font-weight: 600; }
+
+.btn-learn {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    background-color: var(--accent-green);
+    color: var(--bg-main);
+}
+
+.btn-learn:disabled {
+    background-color: #6b6145;
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}

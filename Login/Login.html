@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <title>Gerbang Saga Petualang</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+<body class="game-ui login-page">
+    <div class="login-wrapper">
+        <header class="site-header">
+            <a class="brand" href="Login.html" aria-label="Saga Petualang, beranda"><span class="brand-mark" aria-hidden="true">✦</span><span>SAGA <b>PETUALANG</b></span></a>
+            <span class="header-note">Sebuah dunia. Kisahmu sendiri.</span>
+        </header>
+        <main class="gateway">
+            <section class="world-intro" aria-labelledby="world-title">
+                <div class="world-topline"><span class="eyebrow">CATATAN SANG PETUALANG</span></div>
+                <div class="world-story">
+                    <span class="story-divider" aria-hidden="true">✦</span>
+                    <h1 id="world-title">Setiap legenda <br>bermula dari <br><em>satu langkah.</em></h1>
+                    <p>Jelajahi dunia yang belum terjamah, temukan kekuatanmu, dan tulis kisah petualanganmu sendiri.</p>
+                    <div class="world-details"><span>01 — JELAJAHI</span><span>02 — BERTARUNG</span><span>03 — BERTUMBUH</span></div>
+                </div>
+                <div class="world-caption"><span class="location-dot" aria-hidden="true"></span> Hutan Permulaan <span>Perjalananmu menanti di sini</span></div>
+            </section>
+            <section class="login-box" aria-labelledby="form-title">
+                <span class="portal-symbol" aria-hidden="true">✧</span>
+                <p class="eyebrow">GERBANG PETUALANGAN</p>
+                <h2 id="form-title">Selamat datang,<br> Petualang.</h2>
+                <p class="subtitle" id="form-subtitle">Masuk dan lanjutkan kisahmu.</p>
+                <form id="form-login">
+                    <div class="input-group"><label for="login-email">Email kesatria</label><input type="email" id="login-email" placeholder="nama@email.com" autocomplete="username" required></div>
+                    <div class="input-group"><label for="login-password">Kata sandi</label><input type="password" autocomplete="current-password" maxlength="256" id="login-password" placeholder="Masukkan kata sandi" required></div>
+                    <button type="submit" id="btn-login" class="btn-masuk"><span>Masuk ke petualangan</span><span aria-hidden="true">→</span></button>
+                    <p class="toggle-form">Baru memulai? <button type="button" id="link-to-register">Buat akun</button></p>
+                </form>
+                <form id="form-register" style="display: none;">
+                    <div class="input-group"><label for="reg-email">Email kesatria</label><input type="email" id="reg-email" placeholder="nama@email.com" autocomplete="username" required></div>
+                    <div class="input-group"><label for="reg-password">Kata sandi baru</label><input type="password" autocomplete="new-password" minlength="8" maxlength="256" id="reg-password" placeholder="Minimal 8 karakter" aria-describedby="password-hint" required><small id="password-hint">Gunakan setidaknya 8 karakter.</small></div>
+                    <button type="submit" id="btn-register" class="btn-masuk"><span>Buat akun petualang</span><span aria-hidden="true">→</span></button>
+                    <p class="toggle-form">Sudah punya akun? <button type="button" id="link-to-login">Masuk di sini</button></p>
+                </form>
+                <div class="login-note"><span aria-hidden="true">◇</span><p>Petualangan besar dimulai dengan keberanian kecil.</p></div>
+            </section>
+        </main>
+        <footer class="site-footer"><span>SAGA PETUALANG <span aria-hidden="true">/</span> RPG FANTASI</span><span>Jelajahi. Taklukkan. Jadi legenda.</span></footer>
+    </div>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/auth.js"></script>
+    <script src="Login.js"></script>
+</body>
+</html>

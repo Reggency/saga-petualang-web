@@ -1,0 +1,159 @@
+/* Black and gold UI. Layout, gameplay and original artwork are unchanged. */
+:root {
+    color-scheme: dark;
+    --ui-bg: #080808;
+    --ui-panel: #121210;
+    --ui-surface: #1c1b16;
+    --ui-border: #71603a;
+    --ui-text: #f9f6ee;
+    --ui-muted: #bfb397;
+    --ui-gold: #dfbb62;
+    --ui-blue: var(--ui-gold);
+    --ui-danger: #b84350;
+    --ui-radius: 10px;
+    --ui-control-radius: 6px;
+    --ui-space: 16px;
+    --ui-shadow: 0 8px 24px #08080740;
+    /* Bridge existing page tokens to one palette. */
+    --bg-main: var(--ui-bg);
+    --bg-panel: var(--ui-panel);
+    --bg-panel-soft: var(--ui-surface);
+    --bg-panel-trans: var(--ui-panel);
+    --bg-container: var(--ui-panel);
+    --bg-card: var(--ui-surface);
+    --bg-topbar: var(--ui-surface);
+    --bg-glow: #c1a34f14;
+    --border-color: var(--ui-border);
+    --text-primary: var(--ui-text);
+    --text-secondary: var(--ui-muted);
+    --text-muted: #d1ba7b;
+    --accent-gold: var(--ui-gold);
+    --accent-blue: var(--ui-blue);
+    --ink: var(--ui-text);
+    --muted: var(--ui-muted);
+    --gold: var(--ui-gold);
+    --border: var(--ui-border);
+    --line: var(--ui-border);
+    --panel: var(--ui-panel);
+    --panel-radius: var(--ui-radius);
+    --control-radius: var(--ui-control-radius);
+    --shadow-lg: var(--ui-shadow);
+    --grad-mining: linear-gradient(135deg, #c6a95b, #817553);
+    --grad-chopping: var(--grad-mining);
+}
+.game-ui { background: radial-gradient(ellipse at top, #28262055, transparent 60%), var(--ui-bg); color: var(--ui-text); font-family: 'Poppins', system-ui, sans-serif; }
+.game-ui *, .game-ui *::before, .game-ui *::after { box-sizing: border-box; }
+.game-ui :is(button, input, select, textarea) { font-family: 'Poppins', system-ui, sans-serif; }
+.game-ui :is(button, a, input, select, summary):focus-visible { outline: 2px solid var(--ui-gold); outline-offset: 3px; }
+.game-ui button { border-radius: var(--ui-control-radius); transition: background-color .18s, border-color .18s, filter .18s; }
+.game-ui button:disabled { cursor: not-allowed; }
+.game-ui :is(input, select, textarea) { max-width: 100%; }
+.game-ui :is(h1, h2, h3, h4) { overflow-wrap: anywhere; }
+.game-feature { min-height: 100vh; margin: 0; padding: 24px 16px; font-size: 14px; line-height: 1.6; }
+.game-feature .ui-shell { width: 100%; max-width: 1280px; min-width: 0; margin: 0 auto; padding: 24px; background: var(--ui-panel); border: 1px solid var(--ui-border); border-radius: var(--ui-radius); box-shadow: var(--ui-shadow); }
+.game-feature .ui-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 16px; position: relative; margin: 0 0 24px; padding: 0 0 20px; border: 0; border-bottom: 1px solid var(--ui-border); border-radius: 0; background: transparent; text-align: left; }
+.game-feature .ui-heading { min-width: 0; }
+.game-feature .ui-header :is(h1, h2) { margin: 0 0 8px; padding: 0; color: var(--ui-gold); font: 600 clamp(21px, 2.4vw, 30px)/1.35 'Cinzel', Georgia, serif; letter-spacing: .5px; text-shadow: none; }
+.game-feature .ui-header p { margin: 0; color: var(--ui-muted); font-size: 13px; line-height: 1.7; }
+.game-feature .ui-header h1 > i { font-size: .85em; }
+.game-feature .ui-back { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; position: static; inset: auto; transform: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-height: 42px; margin: 0; padding: 10px 16px; background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: var(--ui-control-radius); color: var(--ui-text); font: 600 12px/1.6 'Poppins', sans-serif; text-decoration: none; white-space: nowrap; cursor: pointer; box-shadow: none; }
+.game-feature .ui-back:hover { background: #282621; border-color: var(--ui-gold); color: var(--ui-gold); transform: none; box-shadow: none; }
+.game-feature .ui-back :is(i, span) { font-size: 14px; }
+.game-feature .lab-header .brand { grid-column: 1; grid-row: 1; align-self: center; }
+.game-feature .lab-header .character { grid-column: 1; grid-row: 2; }
+.game-feature .lab-header { row-gap: 6px; }
+.game-feature :is(.shop-top-bar, .gather-top-bar) { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 16px; margin-bottom: 24px; background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: var(--ui-radius); }
+.game-feature :is(.info-box, .gold-counter) { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 0; padding: 12px 16px; background: var(--ui-panel); border: 1px solid var(--ui-border); border-radius: var(--ui-control-radius); box-shadow: none; }
+.game-feature .wallet-box { flex-wrap: wrap; }
+.game-feature :is(.shop-tabs, .craft-tabs-navigation, .inventory-tabs, .tavern-tabs) { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.game-feature :is(.shop-tab-btn, .btn-tab, .inventory-tab-btn, .tab-button) { min-height: 42px; padding: 10px 16px; border: 1px solid var(--ui-border); border-radius: var(--ui-control-radius); background: var(--ui-surface); color: var(--ui-muted); font: 500 13px/1.5 'Poppins', sans-serif; box-shadow: none; }
+.game-feature :is(.shop-tab-btn, .btn-tab, .inventory-tab-btn, .tab-button):is(.active, :hover) { background: #282621; border-color: var(--ui-gold); color: var(--ui-gold); }
+.game-feature :is(.btn-start, .btn-learn, .btn-recruit, .btn-craft-card, .brew-button) { min-height: 42px; padding: 10px 16px; border: 1px solid #d4af63; border-radius: var(--ui-control-radius); background: linear-gradient(110deg, var(--ui-gold), #d5af62); color: #191815; font: 600 13px/1.6 'Poppins', sans-serif; box-shadow: none; }
+.game-feature :is(.btn-start, .btn-learn, .btn-recruit, .btn-craft-card, .brew-button):hover:not(:disabled) { filter: brightness(1.08); transform: none; }
+.game-feature :is(.btn-start, .btn-learn, .btn-recruit, .btn-craft-card, .brew-button):disabled { background: var(--ui-surface); border-color: var(--ui-border); color: var(--ui-muted); opacity: .65; }
+.game-feature :is(.btn-delete, .btn-danger) { min-height: 42px; padding: 10px 16px; background: var(--ui-danger); color: #fff; border: 1px solid #dc7580; }
+.game-feature :is(.btn-delete, .btn-danger):hover { background: #943340; }
+.game-feature :is(.btn-refresh-quest, .btn-info-small) { min-height: 42px; padding: 10px 16px; background: var(--ui-surface); color: var(--ui-text); border: 1px solid var(--ui-border); border-radius: var(--ui-control-radius); }
+.game-feature :is(.recipe-card, .skill-card, .btn-shop-card, .btn-craft-card, .gather-card, .ally-card, .quest-card, .slot-card, .class-card, .preview-card, .details-panel, .player-info-panel, .card) { min-width: 0; background: var(--ui-surface); border-radius: var(--ui-radius); color: var(--ui-text); box-shadow: none; }
+.game-feature :is(.recipe-card, .skill-card, .btn-shop-card, .btn-craft-card, .gather-card, .ally-card, .quest-card, .slot-card, .class-card) { padding: 16px; }
+.game-feature :is(.recipe-card, .skill-card, .btn-shop-card, .details-panel, .preview-card, .card) { border: 1px solid var(--ui-border); }
+.game-feature :is(.recipe-card h3, .shop-booth h4, .craft-booth h4, .section-title, .panel-title) { color: var(--ui-gold); }
+.game-feature :is(.recipe-materials, .shop-tabs) { border-color: var(--ui-border); }
+.game-feature :is(.supplies > div, .potion-supplies > div, .preview-stat) { background: var(--ui-surface); border-color: var(--ui-border); border-radius: var(--ui-control-radius); }
+.game-feature :is(.items-grid, .skill-grid, .gather-grid, .recipe-grid) { gap: 16px; }
+.game-feature #quest-panel { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.game-feature #tavern-content { grid-template-columns: minmax(0, 1fr); }
+.game-feature #tavern-content > * { min-width: 0; }
+.game-feature .quest-card > div:first-child { flex-wrap: wrap; }
+.game-feature .quest-card { overflow-wrap: anywhere; }
+.game-feature .quest-card button { min-height: 42px; padding: 10px 16px; border: 1px solid #d4af63; background: var(--ui-gold); color: #191815; border-radius: var(--ui-control-radius); font: 600 13px/1.6 'Poppins', sans-serif; }
+.game-feature .quest-card button:disabled { background: var(--ui-surface); border-color: var(--ui-border); color: var(--ui-muted); }
+.game-feature :is(.craft-goods-panel, .craft-booth, .craft-tabs-navigation, .shop-booth) { background: var(--ui-panel); border-color: var(--ui-border); border-radius: var(--ui-radius); box-shadow: none; }
+.game-feature :is(.lab-controls input, .lab-controls select, .conversion-quantity input) { background: var(--ui-surface); color: var(--ui-text); border-color: var(--ui-border); border-radius: var(--ui-control-radius); min-height: 42px; }
+.game-feature :is(.skill-layout, .selection-grid) > * { min-width: 0; }
+.game-feature :is(.tavern-container::after, .lab-emblem) { box-shadow: none; }
+.game-feature .tavern-container::after, .game-feature:has(.tavern-container)::before { background: none; }
+.game-feature .tavern-title-group h1 { font-size: clamp(21px, 2.4vw, 30px); }
+.game-ui .login-box { background: var(--ui-panel); }
+.game-ui .input-group input { background: var(--ui-surface); border-color: var(--ui-border); }
+.game-ui .world-intro { background-image: linear-gradient(180deg, #10100daa, #10100d26 35%, #0e0d0bed), url('../Background/forest.jpg'); }
+.game-ui .btn-masuk { background: linear-gradient(110deg, var(--ui-gold), #d5af62); color: #191815; border-radius: var(--ui-control-radius); }
+/* SweetAlert supplies inline colors, so these shared modal properties need priority. */
+.game-ui .swal2-popup { background: var(--ui-panel) !important; color: var(--ui-text) !important; border: 1px solid var(--ui-border) !important; border-radius: var(--ui-radius) !important; font-family: 'Poppins', sans-serif; }
+.game-ui .swal2-styled.swal2-confirm { background: var(--ui-blue) !important; color: #fff !important; }
+.game-ui .swal2-styled.swal2-cancel { background: var(--ui-surface) !important; color: var(--ui-text) !important; }
+.game-ui .swal2-actions button { min-height: 42px; border-radius: var(--ui-control-radius); font-family: inherit; }
+@media (max-width: 800px) {
+    .game-feature { padding: 12px; }
+    .game-feature .ui-shell { padding: 16px; }
+    .game-feature .skill-layout { grid-template-columns: minmax(0, 1fr); }
+    .game-feature :is(.items-grid, .skill-grid, .gather-grid, .recipe-grid, .ally-grid, .quest-board-grid, .quest-panel) { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+}
+@media (max-width: 600px) {
+    .game-feature .ui-header { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .game-feature .ui-back { grid-column: 1; grid-row: 1; }
+    .game-feature .ui-header > :not(.ui-back) { grid-column: 1; grid-row: auto; }
+    .game-feature .lab-header .brand { grid-row: 2; }
+    .game-feature .lab-header .character { grid-row: 3; }
+    .game-feature .ui-header :is(h1, h2) { font-size: 21px; }
+    .game-feature :is(.info-box, .wallet-box) { min-width: 0; max-width: 100%; }
+    .game-feature .lab-controls > div { min-width: 0; flex-basis: 100%; }
+    .game-feature .material-row { flex-wrap: wrap; }
+    .game-feature .class-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .game-ui :is(button, a) { transition: none; }
+}
+.item-art {
+    --item-art-size: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative; flex: 0 0 var(--item-art-size);
+    width: var(--item-art-size); height: var(--item-art-size);
+    overflow: hidden; border: 1px solid #635a40; border-radius: 8px;
+    background: #141310; color: #e6dab8; font-size: calc(var(--item-art-size) * .45);
+}
+.item-art img { position: absolute; inset: 0; width: 100%; height: 100%; padding: 5px; object-fit: contain; }
+.item-art > [hidden] { display: none !important; }
+.item-art[data-rarity="rare"] { border-color: #d0b979; color: #e1d3ab; }
+.item-art[data-rarity="epic"] { border-color: #d9c693; color: #e7dbba; }
+.item-art[data-rarity="legendary"] { border-color: #d8ad58; color: #efcc83; }
+.eq-row .item-art { --item-art-size: 24px; border-radius: 4px; }
+.eq-row .item-art i { font-size: 12px; }
+.item-art.item-art-inline { --item-art-size: 22px; vertical-align: middle; margin-right: 5px; border-radius: 4px; }
+.item-art-inline img { padding: 2px; }
+.btn-shop-card > .item-art { --item-art-size: 48px; margin-bottom: 6px; }
+.icon-zone .item-art { --item-art-size: 64px; }
+.slot-icon.item-art, .slot-icon > .item-art { --item-art-size: 64px; }
+.recipe-output > .item-art { --item-art-size: 40px; vertical-align: middle; margin-right: 8px; }
+.material-pill .mat-text { display: inline-flex; align-items: center; min-width: 0; }
+.item-art-inline { flex-shrink: 0; }
+
+/* Gold controls and dialogs across every game page. */
+.game-ui :is(h1,h2,.brand,.section-kicker) { color:var(--ui-gold); }
+.game-ui :is(.btn-start-style,.btn-auto-on,.tab-btn.active,.btn-masuk,.btn-enter,.btn-primary) { background:linear-gradient(135deg,#e7c877,#b18b35);color:#141109;border-color:#d5b461; }
+.game-ui :is(.tab-btn,.btn-nav,.inventory-tab-btn,.shop-tab-btn):focus-visible { outline-color:var(--ui-gold); }
+.game-ui .swal2-popup { background:var(--ui-panel)!important;color:var(--ui-text)!important;border:1px solid var(--ui-border); }
+.game-ui .swal2-popup .swal2-title,.game-ui .swal2-popup .swal2-html-container { color:var(--ui-text); }
+.game-ui .swal2-popup .swal2-confirm { background:#dfbb62!important;color:#141109!important; }
+.game-ui .swal2-popup .swal2-cancel { background:#29251b!important;color:#f0dfb6!important; }
+.game-ui .swal2-popup :is(input,select,textarea) { background:var(--ui-surface);color:var(--ui-text);border-color:var(--ui-border); }

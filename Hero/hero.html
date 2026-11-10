@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamar Ksatria - Saga Petualang</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="hero.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+<body class="game-ui game-feature">
+
+    <div class="hero-container ui-shell">
+        <header class="ui-header"><div class="ui-heading"><h2><i class="fa-solid fa-scroll-old"></i> Kamar Ksatria</h2>
+        <p class="subtitle">Selamat datang kembali, <b id="display-username" style="color:#ff9800;">PLAYER</b>. Pilih karaktermu untuk bertualang!</p></div></header>
+
+        <h3 class="section-title">Slot Karakter Kamu (Maks 4)</h3>
+        <div class="selection-grid">
+            <div class="slots-grid" id="slots-container"></div>
+            <aside class="details-panel" id="details-panel">
+                <h3 class="panel-title">Detail Slot Terpilih</h3>
+                <div class="preview-card" id="slot-preview">
+                    <p class="empty">Pilih salah satu slot untuk melihat detail karakter atau membuat karakter baru di slot kosong.</p>
+                </div>
+            </aside>
+        </div>
+
+        <div id="creation-section" class="creation-section" style="display: none;">
+            <div class="class-section-heading"><span class="class-section-kicker">TENTUKAN JALAN PETUALANGANMU</span><h3 id="class-section-title" class="section-title highlighted">Buat Karakter Baru</h3></div>
+            <p id="class-unlock-hint" style="margin: 0 0 18px; color: #ffca28; font-size: 14px;"></p>
+            
+            <div class="input-name-container">
+                <label for="hero-name" style="display: block; margin-bottom: 8px; color: #aaa; font-family: 'Poppins', sans-serif; font-size: 14px;">Nama Karakter (Wajib diisi) :</label>
+                <input type="text" id="hero-name" placeholder="Ketik nama pahlawan... (Contoh: Regg)" maxlength="12" autocomplete="off" 
+                    style="width: 100%; padding: 12px; background-color: #222; border: 1px solid #444; color: #fff; border-radius: 6px; font-size: 16px; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none;">
+            </div>
+
+            <div class="class-grid">
+                <div class="class-card selected" onclick="pilihClass('Warga', this)">
+                    <i class="fa-solid fa-user"></i>
+                    <h4>Warga</h4>
+                    <p>HP: 120 | DEF: 6<br>ATK: 10 | M.DMG: 0<br>ASPD: 8</p>
+                    <p class="desc-text">Status awal karakter. Belum memiliki class spesialis. Pilihan class resmi terbuka mulai level 5.</p>
+                </div>
+                <div class="class-card" onclick="pilihClass('Fighter', this)">
+                    <i class="fa-solid fa-sword"></i>
+                    <h4>Fighter</h4>
+                    <p>HP: 180 | DEF: 12<br>ATK: 24 | M.DMG: 0<br>ASPD: 8</p>
+                    <p class="desc-text">Tank ofensif dengan serangan kuat. Skill awal: Pukulan Keras.</p>
+                </div>
+                <div class="class-card" onclick="pilihClass('Mage', this)">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h4>Mage</h4>
+                    <p>HP: 75 | DEF: 4<br>ATK: 6 | M.DMG: 35<br>ASPD: 10</p>
+                    <p class="desc-text">Penyihir jarak jauh dengan serangan magis. Skill awal: Bola Api.</p>
+                </div>
+                <div class="class-card" onclick="pilihClass('Archer', this)">
+                    <i class="fa-solid fa-bow-arrow"></i>
+                    <h4>Archer</h4>
+                    <p>HP: 110 | DEF: 6<br>ATK: 20 | M.DMG: 0<br>ASPD: 16</p>
+                    <p class="desc-text">Penembak gesit dengan serangan cepat. Skill awal: Panah Ganda.</p>
+                </div>
+                <div class="class-card" onclick="pilihClass('Assassin', this)">
+                    <i class="fa-solid fa-khanda"></i>
+                    <h4>Assassin</h4>
+                    <p>HP: 90 | DEF: 3<br>ATK: 24 | M.DMG: 0<br>ASPD: 22</p>
+                    <p class="desc-text">Pembunuh cepat dengan damage tinggi. Skill awal: Tusukan Belakang.</p>
+                </div>
+            </div>
+            <p id="class-selection-status" class="class-selection-status" role="status"></p>
+        </div>
+
+        <div class="action-row">
+            <button id="btn-action" class="btn-start" onclick="eksekusiAksi()" disabled>
+                <i class="fa-solid fa-lock"></i> Pilih Slot Terlebih Dahulu
+            </button>
+            <button id="btn-delete" class="btn-delete" onclick="hapusKarakter()" style="display: none;">
+                <i class="fa-solid fa-trash"></i> Hapus
+            </button>
+        </div>
+    </div>
+
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="guide.js"></script>
+    <script src="../Shared/boot.js" data-page="hero" data-src="hero.js"></script>
+</body>
+</html>

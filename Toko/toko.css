@@ -1,0 +1,479 @@
+/* ==========================================
+   TOKO RPG GLOBAL STYLE RESET
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0b0b0f;
+    background-image: radial-gradient(circle, #141310 0%, #050508 100%);
+    color: #e2e2e8;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.shop-container {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   HEADER STYLE
+   ========================================== */
+.shop-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: rgba(16,15,13, 0.85);
+    border: 2px solid #4a3b23;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.shop-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    color: #ffb300;
+    text-shadow: 0px 0px 10px rgba(255, 179, 0, 0.3);
+    letter-spacing: 3px;
+}
+
+.shop-header p {
+    font-size: 0.95rem;
+    color: #d3bd81;
+    margin-top: 6px;
+}
+
+/* ==========================================
+   TATA LETAK / GRID LAYOUT
+   ========================================== */
+.shop-layout {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 25px;
+    align-items: flex-start; /* Penting agar fungsi sticky berjalan mulus */
+}
+
+@media (max-width: 900px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+    .profile-panel {
+        position: static !important; /* Nonaktifkan sticky di layar HP kecil */
+    }
+}
+
+/* ==========================================
+   PANEL KIRI (PROFIL & STATUS DENGAN FITUR STICKY)
+   ========================================== */
+.profile-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    /* Membuat komponen melayang mengikuti gerakan scroll */
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    z-index: 10;
+}
+
+.profile-box {
+    background: #11100e;
+    border: 1px solid #23211d;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.profile-box h3 {
+    font-family: 'Metamorphous', cursive;
+    font-size: 1.05rem;
+    color: #ffb300;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #2d2b25;
+    padding-bottom: 8px;
+}
+
+/* Tampilan Besar Dompet Emas */
+.gold-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #191815;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #4a3b23;
+}
+.gold-counter i {
+    font-size: 1.8rem;
+    color: #ffca28;
+}
+#gold {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffca28;
+    text-shadow: 0 0 5px rgba(255,202,40,0.3);
+}
+.gold-counter small {
+    color: #d2bb7e;
+    font-size: 0.9rem;
+}
+
+/* Baris Atribut Karakter */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #1e1d19;
+    font-size: 0.95rem;
+}
+.stat-row span:first-child i { 
+    margin-right: 12px; 
+    width: 16px; 
+    text-align: center; 
+}
+.color-atk { color: #ff5722; }
+.color-def { color: #c2a452; }
+.color-dodge { color: #ba9a41; }
+
+/* Slot Perlengkapan Terpakai (Meniru persis desain rapi di fotomu) */
+.eq-slot {
+    background: #171613;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    border: 1px solid #272520;
+    color: #ddcc9d;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.eq-slot i {
+    color: #ffca28;
+    font-size: 1rem;
+    width: 15px;
+    text-align: center;
+}
+.eq-text {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Tombol Keluar Toko */
+.btn-leave-shop {
+    background: linear-gradient(135deg, #827553 0%, #63593f 100%);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.btn-leave-shop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(130,117,83,0.4);
+    filter: brightness(1.1);
+}
+
+/* ==========================================
+   PANEL KANAN (STAND ETALASE TOKO)
+   ========================================== */
+.shop-goods-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.shop-booth {
+    background: rgba(17,16,14, 0.6);
+    border: 1px solid #23211d;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.shop-booth h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    color: #ff9800;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #282620;
+    padding-bottom: 8px;
+}
+
+/* Grid Kartu Item */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.quest-board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.quest-board-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.quest-reputation-box {
+    background: rgba(123,111,78, 0.1);
+    border: 1px solid #302d27;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #f2ebd9;
+    font-size: 0.95rem;
+}
+
+.quest-board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+.quest-card {
+    background: #13120f;
+    border: 1px solid #25231e;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: all 0.25s ease;
+}
+
+.quest-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.quest-card.common {
+    border-color: #7b6f4e;
+}
+
+.quest-card.rare {
+    border-color: #caaf67;
+}
+
+.quest-card.epic {
+    border-color: #d1ba7b;
+    background-image: linear-gradient(180deg, rgba(21,20,18, 0.98), rgba(34,32,28, 0.9));
+}
+
+.quest-card.mythic {
+    border-color: #fb923c;
+    background-image: linear-gradient(180deg, rgba(35, 18, 0, 0.96), rgba(65, 16, 10, 0.92));
+}
+
+.quest-rarity {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.quest-rarity.common {
+    color: #8d7f5a;
+    background: rgba(123,111,78, 0.12);
+}
+
+.quest-rarity.rare {
+    color: #d4bf86;
+    background: rgba(202,175,103, 0.12);
+}
+
+.quest-rarity.epic {
+    color: #decea2;
+    background: rgba(209,186,123, 0.14);
+}
+
+.quest-rarity.mythic {
+    color: #fb923c;
+    background: rgba(251, 146, 60, 0.14);
+}
+
+.quest-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.quest-card-details {
+    color: #eadfc2;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.quest-card-reward {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.quest-card-reward span {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.quest-card button {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    background: #c1a34f;
+    color: #fff;
+    transition: background 0.2s ease;
+}
+
+.quest-card button:hover {
+    background: #b59640;
+}
+
+.btn-refresh-quest {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border: 1px solid #c1a34f;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #b59640 0%, #c1a34f 100%);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-refresh-quest:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+/* Tombol Kartu Belanja */
+.btn-shop-card {
+    background: #171613;
+    border: 1px solid #2b2923;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-shop-card:hover {
+    transform: translateY(-3px);
+    border-color: #ffb300;
+    background: #1e1d19;
+    box-shadow: 0 5px 15px rgba(255, 179, 0, 0.15);
+}
+
+/* Isi Teks dalam Kartu */
+.item-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.item-effect {
+    font-size: 0.8rem;
+    color: #ba9a41;
+    margin-bottom: 12px;
+}
+
+.item-price {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ffca28;
+    background: #21201b;
+    padding: 4px 10px;
+    border-radius: 4px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Desain Khusus Booth Potion */
+.section-potion .btn-shop-card {
+    border-color: #837754;
+}
+.section-potion .item-effect {
+    color: #e91e63;
+}
+.section-potion .btn-shop-card:hover {
+    border-color: #e91e63;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+/* Custom Jendela Popup SweetAlert2 agar Kotak & Bertema Gelap Premium */
+.rpg-swal-popup {
+    border: 2px solid #4a3b23 !important; /* Bingkai emas tembaga kuno */
+    border-radius: 6px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9) !important;
+}
+
+.rpg-swal-btn {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 10px 22px !important;
+    border-radius: 4px !important; /* Mengubah tombol bulat menjadi kotak khas RPG */
+}
+
+/* Style untuk panel penjualan */
+.sell-card {
+    border-color: #ba9a41; /* Warna hijau untuk item yang bisa dijual */
+}
+
+.sell-card:hover {
+    border-color: #d0b878;
+    box-shadow: 0 5px 15px rgba(186,154,65, 0.2);
+}
+
+.sell-card .item-effect {
+    color: #d0ba7b; /* Warna netral untuk teks harga jual */
+}
+
+.sell-card .item-price {
+    background: #695f43; /* Hijau lebih gelap untuk tombol Jual */
+    color: #fff;
+}
+
+.no-items-to-sell {
+    grid-column: 1 / -1; /* Agar teks memenuhi lebar grid */
+    text-align: center;
+    color: #d0ba7b;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+}
+

@@ -1,0 +1,280 @@
+/* ==========================================================================
+   RPG GATHERING (MINING & CHOPPING) UI SYSTEM 
+   ========================================================================== */
+
+   :root {
+    --bg-main: #0a0908;
+    --bg-card: #131210;
+    --bg-topbar: #151411; /* Warna baru untuk Top Bar */
+    --border-color: #2a2822;
+    
+    --color-forest: #7b6f4e;
+    --color-cave: #d1ba7b;
+    --color-ruins: #eadfc2;
+    --color-tundra: #c9af67;
+    --color-lava: #f97316;
+    --color-boss: #ef4444;
+
+    /* Gradien untuk tombol */
+    --grad-mining: linear-gradient(135deg, #c8ad63, #817452);
+    --grad-chopping: linear-gradient(135deg, #716648, #2c2a24);
+    --grad-stop: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    background-image: radial-gradient(circle at 50% 10%, rgba(31,29,25, 0.4), transparent 60%);
+    color: #faf7f0;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+.gather-container {
+    max-width: 1200px; /* Boleh dinaikkan jadi 1400px kalau mau lebih lebar lagi */
+    margin: 0 auto;
+}
+
+/* ================= HEADER STYLE ================= */
+.gather-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gather-header h1 {
+    font-family: 'Cinzel', serif;
+    color: #fbbf24;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+.gather-header p {
+    color: #d1ba7b;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* ================= TOP BAR (NEW) ================= */
+.gather-top-bar {
+    background-color: var(--bg-topbar);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.info-box {
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.info-box.box-profesi {
+    background: linear-gradient(145deg, rgba(36,35,30, 0.8), rgba(107,96,68, 0.8));
+    border-color: #c8ad63;
+}
+
+.info-box.box-alat {
+    background: linear-gradient(145deg, rgba(37,35,30, 0.8), rgba(44,42,36, 0.8));
+    border-color: #8d7f5a;
+}
+
+.level-badge {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.btn-leave {
+    background: linear-gradient(135deg, #caaf67, #b59640);
+    box-shadow: 0 4px 10px rgba(202,175,103, 0.3);
+}
+
+.btn-leave:hover {
+    background: linear-gradient(135deg, #d4bf86, #c1a34f);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(202,175,103, 0.5);
+}
+
+/* ================= CARDS GRID ================= */
+.gather-grid {
+    display: grid;
+    /* Grid akan menyesuaikan lebar otomatis. Jika layar lebar, bisa 3-4 kartu sebaris */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
+}
+
+.gather-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden; /* Supaya tag tidak keluar dari border radius */
+}
+
+/* Efek Glow saat card di-hover */
+.gather-card:hover:not(.locked) {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    border-color: #6b6145;
+}
+
+/* ================= CARD ELEMENTS ================= */
+.gather-card h3 {
+    font-size: 1.2rem;
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.icon-zone {
+    font-size: 4rem; /* Ikon sedikit diperbesar */
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+.owned-box {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #d1ba7b;
+    margin: 0 auto 15px auto;
+    width: fit-content;
+    border: 1px solid #312e28;
+}
+
+.owned-box span {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+/* TAGS */
+.req-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #6b6145;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.req-tag.bg-red { background: #dc2626; }
+
+.stage-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ENGINE PROGRESS BAR */
+.pg-container {
+    width: 100%;
+    height: 8px; /* Sedikit ditebalkan */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.pg-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #c9af67, #dccb9d);
+    transition: width 0.05s linear;
+    box-shadow: 0 0 10px rgba(201,175,103, 0.5); /* Efek nyala saat loading */
+}
+
+/* ================= BUTTONS ================= */
+.btn-action {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.mining-btn { background: var(--grad-mining); border: 1px solid #d3bd81; }
+.mining-btn:hover { background: linear-gradient(135deg, #d3bd81, #bd9d45); }
+
+.chopping-btn { background: var(--grad-chopping); border: 1px solid #8d7f5a; }
+.chopping-btn:hover { background: linear-gradient(135deg, #8d7f5a, #5b523a); }
+
+.btn-stop-active {
+    background: var(--grad-stop) !important;
+    border-color: #f87171 !important;
+    animation: pulse 1.5s infinite; /* Tambah animasi denyut saat aktif */
+}
+
+/* ================= TERKUNCI (LOCKED CARD EFFECT) ================= */
+.gather-card.locked {
+    filter: grayscale(1); /* Full abu-abu */
+    opacity: 0.6;
+    pointer-events: none;
+    border-color: #201e1a;
+}
+
+.gather-card.locked .btn-action {
+    background: #312e28;
+    color: #d1ba7b;
+    cursor: not-allowed;
+    box-shadow: none;
+    border-color: #6b6145;
+}
+
+/* ================= STYLING WARNA ASSET ================= */
+.tier-forest .stage-tag { color: var(--color-forest); background: rgba(123,111,78, 0.15); border: 1px solid rgba(123,111,78, 0.3); }
+.tier-cave .stage-tag { color: var(--color-cave); background: rgba(209,186,123, 0.15); border: 1px solid rgba(209,186,123, 0.3); }
+.tier-ruins .stage-tag { color: var(--color-ruins); background: rgba(234,223,194, 0.15); border: 1px solid rgba(234,223,194, 0.3); }
+.tier-tundra .stage-tag { color: var(--color-tundra); background: rgba(201,175,103, 0.15); border: 1px solid rgba(201,175,103, 0.3); }
+.tier-lava .stage-tag { color: var(--color-lava); background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); }
+.tag-boss { background: rgba(239, 68, 68, 0.2) !important; color: var(--color-boss) !important; border: 1px solid rgba(239, 68, 68, 0.5); }
+
+/* Warna Ikon Mineral */
+.mineral-copper { color: #d97757; text-shadow: 0 0 10px rgba(217, 119, 87, 0.3); } 
+.mineral-iron { color: #d1ba7b; text-shadow: 0 0 10px rgba(209,186,123, 0.3); } 
+.mineral-silver { color: #f4eede; text-shadow: 0 0 10px rgba(244,238,222, 0.5); } 
+.mineral-gold { color: #fbbf24; text-shadow: 0 0 15px rgba(251, 191, 36, 0.6); } 
+.mineral-titanium { color: #decea2; text-shadow: 0 0 15px rgba(222,206,162, 0.6); }
+.mineral-mithril { color: #bd9d44; text-shadow: 0 0 20px #bd9d44; animation: glow 2s infinite alternate; }
+
+/* Warna Ikon Pohon */
+.tree-balsa { color: #fef08a; text-shadow: 0 0 10px rgba(254, 240, 138, 0.3); } 
+.tree-pinus { color: #dbca9a; text-shadow: 0 0 10px rgba(219,202,154, 0.3); } 
+.tree-oak { color: #8d7f5a; text-shadow: 0 0 10px rgba(141,127,90, 0.3); } 
+.tree-ironwood { color: #d6c28a; text-shadow: 0 0 10px rgba(214,194,138, 0.4); } 
+.tree-mahoni { color: #f97316; text-shadow: 0 0 10px rgba(249, 115, 22, 0.4); } 
+.tree-elder { color: #f43f5e; text-shadow: 0 0 20px #f43f5e; animation: glow 2s infinite alternate; }
+
+/* ================= ANIMASI ================= */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px currentColor); }
+    to { filter: drop-shadow(0 0 15px currentColor); }
+}

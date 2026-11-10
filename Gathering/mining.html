@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Tambang Galian - Mining</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="gathering.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+<body class="game-ui game-feature" data-type="mining">
+
+    <div class="gather-container ui-shell">
+        <header class="gather-header ui-header">
+            <div class="ui-heading"><h1><i class="fa-solid fa-mountain-rocks"></i> AREA PERTAMBANGAN ASTRAL</h1>
+            <p>Tingkatkan level profesimu dan gunakan beliung terbaik untuk menghancurkan batuan keras.</p></div>
+        
+
+            <button class="btn-leave ui-back" onclick="window.location.href='../Utama/Index.html'">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Kota
+            </button>
+        </header>
+
+        <div class="gather-top-bar">
+            
+            <div class="info-box box-profesi">
+                <h3 style="margin: 0; color: #3b82f6; font-size: 1.1rem;"><i class="fa-solid fa-medal"></i> Profesi Tambang</h3>
+                <div class="level-badge" style="background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">Lv. <span id="profesi-level">1</span></div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <div class="exp-container" style="width: 150px; background: #0f172a; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div class="exp-bar" id="profesi-exp-bar" style="height: 100%; background: #3b82f6; width: 0%;"></div>
+                    </div>
+                    <div class="exp-text" style="font-size: 0.8rem; color: #aaa;"><span id="profesi-exp">0</span> / <span id="profesi-max-exp">100</span> EXP</div>
+                </div>
+            </div>
+
+            <div class="info-box box-alat">
+                <h3 style="margin: 0; color: #10b981; font-size: 1.1rem;"><i class="fa-solid fa-screwdriver-wrench"></i> Alat Aktif:</h3>
+                <div class="tool-display" style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-pickaxe tool-icon" style="color: #10b981; font-size: 1.5rem;"></i>
+                    <div class="tool-detail" style="display: flex; flex-direction: column;">
+                        <b id="tool-name" style="color: #fff;">Beliung Pemula</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <main class="gather-grid" style="width: 100%;">
+            <div class="gather-card tier-forest" id="card-Copper-Ore">
+                <div class="req-tag">Butuh Lv. 1</div>
+                <div class="stage-tag">Stage: Forest</div>
+                <div class="icon-zone"><i class="fa-solid fa-cube mineral-copper"></i></div>
+                <h3>Copper Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Copper-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Copper-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Copper-Ore" onclick="toggleGather('Copper Ore', 'mining')">Mulai Menambang</button>
+            </div>
+
+            <div class="gather-card tier-cave" id="card-Iron-Ore">
+                <div class="req-tag">Butuh Lv. 5</div>
+                <div class="stage-tag">Stage: Cave</div>
+                <div class="icon-zone"><i class="fa-solid fa-cube mineral-iron"></i></div>
+                <h3>Iron Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Iron-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Iron-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Iron-Ore" onclick="toggleGather('Iron Ore', 'mining')">Mulai Menambang</button>
+            </div>
+
+            <div class="gather-card tier-ruins" id="card-Silver-Ore">
+                <div class="req-tag">Butuh Lv. 10</div>
+                <div class="stage-tag">Stage: Ruins</div>
+                <div class="icon-zone"><i class="fa-solid fa-cube mineral-silver"></i></div>
+                <h3>Silver Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Silver-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Silver-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Silver-Ore" onclick="toggleGather('Silver Ore', 'mining')">Mulai Menambang</button>
+            </div>
+
+            <div class="gather-card tier-tundra" id="card-Gold-Ore">
+                <div class="req-tag">Butuh Lv. 20</div>
+                <div class="stage-tag">Stage: Frost Tundra</div>
+                <div class="icon-zone"><i class="fa-solid fa-cube mineral-gold"></i></div>
+                <h3>Gold Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Gold-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Gold-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Gold-Ore" onclick="toggleGather('Gold Ore', 'mining')">Mulai Menambang</button>
+            </div>
+
+            <div class="gather-card tier-lava" id="card-Titanium-Ore">
+                <div class="req-tag">Butuh Lv. 30</div>
+                <div class="stage-tag">Stage: Lava Lair</div>
+                <div class="icon-zone"><i class="fa-solid fa-cube mineral-titanium"></i></div>
+                <h3>Titanium Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Titanium-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Titanium-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Titanium-Ore" onclick="toggleGather('Titanium Ore', 'mining')">Mulai Menambang</button>
+            </div>
+
+            <div class="gather-card tier-boss" id="card-Mithril-Ore">
+                <div class="req-tag bg-red">Butuh Lv. 45</div>
+                <div class="stage-tag tag-boss">BOSS Dragon Lava</div>
+                <div class="icon-zone"><i class="fa-solid fa-gem mineral-mithril"></i></div>
+                <h3>Mithril Ore</h3>
+                <div class="owned-box">Di Tas: <span id="qty-Mithril-Ore">0</span></div>
+                <div class="pg-container"><div class="pg-bar" id="pg-Mithril-Ore"></div></div>
+                <button class="btn-action mining-btn" id="btn-Mithril-Ore" onclick="toggleGather('Mithril Ore', 'mining')">Mulai Menambang</button>
+            </div>
+        </main>
+    </div>
+
+        <!-- Mining sounds removed to prevent audio spam / performance issues -->
+
+        <script src="../Shared/items.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/boot.js" data-page="gathering" data-src="gathering.js"></script>
+</body>
+</html>

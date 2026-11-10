@@ -1,0 +1,48 @@
+.journal-menu { margin: 10px 0; color: #e8c66a; }
+.journal-menu summary { cursor: pointer; padding: 8px; }
+.journal-menu button, .journal-launch, .journal-dialog button, .journal-dialog input, .journal-dialog select { border: 1px solid #6d6245; border-radius: 8px; background: #211f1b; color: #f6f2e6; padding: 9px 12px; margin: 4px; font: inherit; }
+.journal-dialog { box-sizing: border-box; width: min(880px, 94vw); max-height: 88dvh; border: 1px solid #c6a653; border-radius: 14px; background: #13120f; color: #f3ecdb; padding: 0; overflow: hidden; }
+.journal-dialog[open] { display: flex; flex-direction: column; }
+.journal-dialog::backdrop { background: #090807c9; }
+.journal-dialog header { display: flex; flex-shrink: 0; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; background: #1a1915; border-bottom: 1px solid #6d6245; }
+.journal-dialog header h2 { min-width: 0; overflow-wrap: anywhere; font-size: 1.25rem; }
+.journal-body { padding: 16px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; }
+.journal-body > p { margin: 0 0 12px; line-height: 1.6; }
+.journal-body [role="status"]:empty { display: none; }
+.journal-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.journal-filters input { flex: 1 1 200px; min-width: 0; }
+.journal-filters select { max-width: 100%; }
+.journal-dialog :is(button, input, select) { box-sizing: border-box; min-height: 42px; margin: 0; }
+.journal-dialog header button { flex-shrink: 0; }
+.journal-launch { min-height: 42px; max-width: 100%; margin: 8px 0; cursor: pointer; }
+.journal-dialog h2, .journal-dialog h3 { color: #edcc7d; margin: 8px 0; }
+.journal-dialog button { cursor: pointer; }
+.journal-dialog button[aria-pressed="true"] { border-color: #edcc7d; color: #edcc7d; }
+.journal-dialog :focus-visible { outline: 2px solid #edcc7d; outline-offset: 2px; }
+.journal-card { padding: 14px; border: 1px solid #595039; border-radius: 10px; margin-top: 12px; background: #1a1915; overflow-wrap: anywhere; }
+.journal-card p { line-height: 1.6; }
+.journal-card small { display: block; color: #e4d6b1; margin: 3px 0 10px; }
+.journal-card a { color: #e0d0a6; }
+.journal-missing { color: #f4b7a7; }
+.journal-owned { color: #dfd0a5; }
+.set-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.set-card { margin-top: 0; display: flex; flex-direction: column; gap: 8px; }
+.set-card h3, .set-card p { margin: 0; }
+.set-class { align-self: flex-start; font-size: .75rem; color: #e9debf; border: 1px solid #6d6245; border-radius: 6px; padding: 2px 8px; }
+.set-items { margin-top: auto; border-top: 1px solid #595039; }
+.set-items summary, .recipe-sources summary { cursor: pointer; min-height: 42px; padding: 10px 0; color: #edcc7d; }
+.set-items ul, .recipe-sources ul { padding-left: 20px; margin: 0; line-height: 1.7; }
+.recipe-entry { display: flex; flex-direction: column; min-width: 0; }
+.recipe-entry > .btn-craft-card { width: 100%; flex: 1; }
+.recipe-sources { font-size: .8rem; text-align: left; color: #e4d6b1; overflow-wrap: anywhere; }
+.recipe-search { display: block; margin: 12px 0; color: #f3ecdb; font-size: .85rem; }
+.recipe-search[hidden] { display: none; }
+.recipe-search input { display: block; box-sizing: border-box; width: 100%; min-height: 42px; margin-top: 6px; padding: 8px 12px; background: #211f1b; border: 1px solid #6d6245; border-radius: 8px; color: #f6f2e6; }
+.player-earned-title { display: block; color: #edcc7d; font-size: .8rem; overflow-wrap: anywhere; }
+.equipment-set-label { display: block; color: #edcc7d; margin: 6px 0; }
+.dungeon-status { color: #edcc7d; font-size: .8rem; overflow-wrap: anywhere; }
+.boss-mechanic { color: #edcc7d; font-size: .8rem; line-height: 1.5; }
+.formation-editor { text-align: left; max-height: 55vh; overflow-y: auto; font-size: .85rem; }
+.formation-editor > div { padding: 10px 0; border-top: 1px solid #6d6245; }
+.formation-editor select { display: block; max-width: 100%; background: #211f1b; color: #f6f2e6; padding: 8px; border: 1px solid #6d6245; border-radius: 8px; margin: 5px 0; }
+@media (max-width: 540px) { .journal-body { padding: 12px; } .journal-dialog h2 { font-size: 1.1rem; } .set-grid { grid-template-columns: minmax(0, 1fr); } }

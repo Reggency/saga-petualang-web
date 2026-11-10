@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantong Petualang - RPG Game</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+    <link rel="stylesheet" href="../Shared/journal.css">
+</head>
+<body class="game-ui game-feature">
+
+    <div class="inven-container ui-shell">
+        <header class="inven-header ui-header">
+            <div class="ui-heading"><h1><i class="fa-solid fa-bag-shopping"></i> KANTONG PETUALANG</h1>
+            <p>Lihat semua koleksi material, hasil galian tambang, dan hasil rakitanmu di sini.</p></div>
+        
+            <button class="btn-back ui-back" onclick="window.location.href='../Utama/Index.html'">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Kota
+            </button>
+        </header>
+
+        <main class="inven-main">
+            <section class="potion-supplies" aria-label="Persediaan Potion">
+                <div><span>Potion Penyembuh</span><strong id="inventory-potions">0</strong><small>Memulihkan 50% Max HP</small></div>
+                <div><span>Potion Mana</span><strong id="inventory-mana-potions">0</strong><small>Memulihkan 50% Max Mana</small></div>
+            </section>
+            
+            <div class="main-title gold-title">
+                <h3><i class="fa-solid fa-chest"></i> Peti Jarahan Material</h3>
+            </div>
+            <div id="inventory-tabs" class="inventory-tabs"></div>
+
+            <div id="title-material" class="main-title">
+                <h3><i class="fa-solid fa-gem"></i> Material Drop</h3>
+            </div>
+            <div id="grid-material" class="material-grid"></div>
+
+            <div id="title-mining" class="main-title">
+                <h3><i class="fa-solid fa-mountain"></i> Hasil Pertambangan</h3>
+            </div>
+            <div id="grid-mining" class="material-grid"></div>
+
+            <div id="title-ingot" class="main-title">
+                <h3><i class="fa-solid fa-cube"></i> Hasil Peleburan</h3>
+            </div>
+            <div id="grid-ingot" class="material-grid"></div>
+
+            <div id="title-wood" class="main-title">
+                <h3><i class="fa-solid fa-tree"></i> Hasil Penebangan</h3>
+            </div>
+            <div id="grid-wood" class="material-grid"></div>
+
+            <div id="title-equipment" class="main-title">
+                <h3><i class="fa-solid fa-shield-halved"></i> Perlengkapan</h3>
+            </div>
+            <div id="grid-equipment" class="material-grid"></div>
+        </main>
+    </div>
+
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/materials.js"></script>
+    <script src="../Crafting/recipes.js"></script>
+    <script src="../Crafting/crafting-core.js"></script>
+    <script src="../Alchemy/recipes.js"></script>
+    <script src="../Shared/equipment-sets.js"></script>
+    <script src="../Shared/boot.js" data-page="inventory" data-src="inventory.js?v=999"></script>
+</body>
+</html>

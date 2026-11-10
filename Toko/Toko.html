@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasar Pusat Kota - Toko Perlengkapan RPG</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="toko.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+<body class="game-ui game-feature">
+
+    <div class="shop-container ui-shell">
+        <header class="shop-header ui-header">
+            <div class="ui-heading"><h1><i class="fa-solid fa-store"></i> PASAR PUSAT KOTA <i class="fa-solid fa-coins"></i></h1>
+            <p>Tukarkan emas hasil buruanmu dengan persenjataan tingkat tinggi, perkakas kerja, dan aksesoris magis.</p></div>
+        
+
+            <button id="btn-back" class="btn-leave-shop ui-back">
+                <i class="fa-solid fa-arrow-left"></i> Kembali Berpetualang
+            </button>
+        </header>
+
+        <!-- TOP BAR (Pengganti Panel Samping) -->
+        <div class="shop-top-bar">
+            
+            <div class="wallet-box" style="display: flex; align-items: center; gap: 15px;">
+                <h3 style="margin: 0; color: #fbbf24; font-size: 1.1rem;"><i class="fa-solid fa-vault"></i> Keuangan Anda:</h3>
+                <div class="gold-counter">
+                    <i class="fa-solid fa-coins" style="color: #fbbf24;"></i>
+                    <span id="gold" style="color: #fff; font-size: 1.2rem;">0</span> <small style="color: #aaa;">Gold</small>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="shop-tabs">
+            <button id="tab-buy" class="shop-tab-btn active" onclick="switchTab('buy')">Beli Barang</button>
+            <button id="tab-sell" class="shop-tab-btn" onclick="switchTab('sell')">Jual Barang</button>
+        </div>
+
+        <main class="shop-goods-panel" style="width: 100%;">
+            <div id="buy-panel">
+            
+            <section class="shop-booth section-potion">
+                <h4><i class="fa-solid fa-flask"></i> Apotek Alkimia (Ramuan & Buff Durasi)</h4>
+                <p style="font-size: 0.8rem; color: #888ea8; margin-bottom: 15px; padding-left: 5px;">*Efek ramuan penguat akan aktif selama 5 Menit sejak dibeli.</p>
+                
+                <div class="items-grid">
+                    <button class="btn-shop-card" onclick="beliPotion('hp', '🧪 Potion Penyembuh', 20)">
+                        <span class="item-name">🧪 Potion Penyembuh</span>
+                        <span class="item-effect">Memulihkan 50% HP Langsung</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 20 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliManaPotion('potion_mana', '💧 Potion Mana', 30)">
+                        <span class="item-name">💧 Potion Mana</span>
+                        <span class="item-effect">Memulihkan 50% Mana</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 30 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliBuff('atk', '💊 Ramuan Amarah (ATK)', 100, 5)">
+                        <span class="item-name">💊 Ramuan Amarah</span>
+                        <span class="item-effect">+20 ATK (Durasi: 5 Menit)</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 100 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliBuff('magic', '🔮 Ramuan Mana (Magic)', 100, 5)">
+                        <span class="item-name">🔮 Ramuan Kebijaksanaan</span>
+                        <span class="item-effect">+20 Magic DMG (Durasi: 5 Menit)</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 100 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliBuff('aspd', '⚡ Ramuan Angin (Atk Speed)', 120, 5)">
+                        <span class="item-name">⚡ Ramuan Angin</span>
+                        <span class="item-effect">+15 Atk Speed (Durasi: 5 Menit)</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 120 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliBuff('def', '🛡️ Ramuan Kulit Batu (DEF)', 90, 5)">
+                        <span class="item-name">🛡️ Ramuan Kulit Batu</span>
+                        <span class="item-effect">+25 DEF (Durasi: 5 Menit)</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 90 Gold</span>
+                    </button>
+                    <button class="btn-shop-card" onclick="beliBuff('dodge', '💨 Ramuan Ilusi (Dodge)', 150, 5)">
+                        <span class="item-name">💨 Ramuan Ilusi</span>
+                        <span class="item-effect">+15% Dodge (Durasi: 5 Menit)</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 150 Gold</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="shop-booth" style="margin-top: 25px;">
+                <h4><i class="fa-solid fa-screwdriver-wrench"></i> Bengkel Pandai Besi (Alat Tambang & Penebang)</h4>
+                <p style="font-size: 0.8rem; color: #888ea8; margin-bottom: 15px; padding-left: 5px;">*Bisa dibeli bebas, namun pastikan Level Profesi kamu mencukupi untuk menggunakan alat ini.</p>
+                
+                <h5 style="color: #38bdf8; font-size: 0.95rem; margin: 15px 0 10px 5px; text-transform: uppercase;"><i class="fa-solid fa-pickaxe"></i> Koleksi Beliung Tambang (Pickaxe)</h5>
+                <div class="items-grid" style="margin-bottom: 25px;">
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-copper" onclick="beliTool('pickaxe_copper', '⛏️ Beliung Tembaga', 'mining', 1, 1.3, 50)">
+                        <span class="item-name">⛏️ Beliung Tembaga</span>
+                        <span class="item-effect">Kecepatan: 1.3x <br><b>Syarat Pemakaian: Tambang Lv. 1</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 50 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-iron" onclick="beliTool('pickaxe_iron', '⛏️ Beliung Besi', 'mining', 5, 1.8, 250)">
+                        <span class="item-name">⛏️ Beliung Besi</span>
+                        <span class="item-effect">Kecepatan: 1.8x <br><b>Syarat Pemakaian: Tambang Lv. 5</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 250 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-silver" onclick="beliTool('pickaxe_silver', '⛏️ Beliung Perak', 'mining', 10, 2.5, 600)">
+                        <span class="item-name">⛏️ Beliung Perak</span>
+                        <span class="item-effect">Kecepatan: 2.5x <br><b>Syarat Pemakaian: Tambang Lv. 10</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 600 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-gold" onclick="beliTool('pickaxe_gold', '⛏️ Beliung Emas', 'mining', 20, 3.5, 1500)">
+                        <span class="item-name">⛏️ Beliung Emas</span>
+                        <span class="item-effect">Kecepatan: 3.5x <br><b>Syarat Pemakaian: Tambang Lv. 20</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 1500 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-titanium" onclick="beliTool('pickaxe_titanium', '⛏️ Beliung Titanium', 'mining', 30, 5.0, 4000)">
+                        <span class="item-name">⛏️ Beliung Titanium</span>
+                        <span class="item-effect">Kecepatan: 5.0x <br><b>Syarat Pemakaian: Tambang Lv. 30</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 4000 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-pickaxe-mithril" onclick="beliTool('pickaxe_mithril', '⛏️ Beliung Mithril (BOSS)', 'mining', 45, 8.0, 12000)">
+                        <span class="item-name">⛏️ Beliung Mithril</span>
+                        <span class="item-effect">Kecepatan: 8.0x <br><b>Syarat Pemakaian: Tambang Lv. 45</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 12.000 Gold</span>
+                    </button>
+                </div>
+
+                <h5 style="color: #10b981; font-size: 0.95rem; margin: 15px 0 10px 5px; text-transform: uppercase;"><i class="fa-solid fa-axe"></i> Koleksi Kapak Penebang (Axe)</h5>
+                <div class="items-grid">
+                    <button class="btn-shop-card border-tool" id="btn-axe-balsa" onclick="beliTool('axe_balsa', '🪓 Kapak Kayu Balsa', 'chopping', 1, 1.3, 50)">
+                        <span class="item-name">🪓 Kapak Kayu Balsa</span>
+                        <span class="item-effect">Kecepatan: 1.3x <br><b>Syarat Pemakaian: Tebang Lv. 1</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 50 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-axe-pinus" onclick="beliTool('axe_pinus', '🪓 Kapak Kayu Pinus', 'chopping', 5, 1.8, 250)">
+                        <span class="item-name">🪓 Kapak Kayu Pinus</span>
+                        <span class="item-effect">Kecepatan: 1.8x <br><b>Syarat Pemakaian: Tebang Lv. 5</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 250 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-axe-oak" onclick="beliTool('axe_oak', '🪓 Kapak Kayu Oak', 'chopping', 10, 2.5, 600)">
+                        <span class="item-name">🪓 Kapak Kayu Oak</span>
+                        <span class="item-effect">Kecepatan: 2.5x <br><b>Syarat Pemakaian: Tebang Lv. 10</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 600 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-axe-ironwood" onclick="beliTool('axe_ironwood', '🪓 Kapak Ironwood', 'chopping', 20, 3.5, 1500)">
+                        <span class="item-name">🪓 Kapak Ironwood</span>
+                        <span class="item-effect">Kecepatan: 3.5x <br><b>Syarat Pemakaian: Tebang Lv. 20</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 1500 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-axe-mahoni" onclick="beliTool('axe_mahoni', '🪓 Kapak Kayu Mahoni', 'chopping', 30, 5.0, 4000)">
+                        <span class="item-name">🪓 Kapak Kayu Mahoni</span>
+                        <span class="item-effect">Kecepatan: 5.0x <br><b>Syarat Pemakaian: Tebang Lv. 30</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 4000 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-tool" id="btn-axe-elderwood" onclick="beliTool('axe_elderwood', '🪓 Kapak Elderwood (BOSS)', 'chopping', 45, 8.0, 12000)">
+                        <span class="item-name">🪓 Kapak Elderwood</span>
+                        <span class="item-effect">Kecepatan: 8.0x <br><b>Syarat Pemakaian: Tebang Lv. 45</b></span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 12.000 Gold</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="shop-booth mt-4" style="margin-top: 25px;">
+                <h4><i class="fa-solid fa-box-open"></i> Pengepul Material (Bahan Crafting)</h4>
+                <p style="font-size: 0.8rem; color: #888ea8; margin-bottom: 15px; padding-left: 5px;">*Beli material jika kamu kesulitan mendapatkannya dari monster. Harga disesuaikan dengan kelangkaan.</p>
+                
+                <div class="items-grid">
+                    <button class="btn-shop-card border-forest" onclick="beliMaterial('mat_lendir_slime', '💧 Lendir Slime', 10)">
+                        <span class="item-name">💧 Lendir Slime</span>
+                        <span class="item-effect">Material dasar Hutan</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 10 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-forest" onclick="beliMaterial('mat_sayap_kelelawar', '🦇 Sayap Kelelawar', 15)">
+                        <span class="item-name">🦇 Sayap Kelelawar</span>
+                        <span class="item-effect">Material dasar Hutan</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 15 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-forest" onclick="beliMaterial('mat_sutra_labalaba', '🕸️ Sutra Laba-Laba', 20)">
+                        <span class="item-name">🕸️ Sutra Laba-Laba</span>
+                        <span class="item-effect">Bahan perajut tangguh</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 20 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-forest" onclick="beliMaterial('mat_akar_beracun', '🌿 Akar Beracun', 25)">
+                        <span class="item-name">🌿 Akar Beracun</span>
+                        <span class="item-effect">Bahan pembuat belati</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 25 Gold</span>
+                    </button>
+
+                    <button class="btn-shop-card border-cave" onclick="beliMaterial('mat_telinga_goblin', '🧝‍♂️ Telinga Goblin', 40)">
+                        <span class="item-name">🧝‍♂️ Telinga Goblin</span>
+                        <span class="item-effect">Material Gua Gelap</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 40 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-cave" onclick="beliMaterial('mat_kulit_serigala', '🐺 Kulit Serigala', 50)">
+                        <span class="item-name">🐺 Kulit Serigala</span>
+                        <span class="item-effect">Bahan zirah pelindung</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 50 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-cave" onclick="beliMaterial('mat_bijih_besi', '🪨 Bijih Besi', 60)">
+                        <span class="item-name">🪨 Bijih Besi</span>
+                        <span class="item-effect">Bahan tempa senjata Orc</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 60 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-cave" onclick="beliMaterial('mat_sengat_kristal', '🦂 Sengat Kristal', 80)">
+                        <span class="item-name">🦂 Sengat Kristal</span>
+                        <span class="item-effect">Bahan tajam kristalisasi</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 80 Gold</span>
+                    </button>
+
+                    <button class="btn-shop-card border-ruins" onclick="beliMaterial('mat_kain_kafan', '📜 Kain Kafan Kuno', 120)">
+                        <span class="item-name">📜 Kain Kafan Kuno</span>
+                        <span class="item-effect">Mengandung sihir mumi</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 120 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-ruins" onclick="beliMaterial('mat_pecahan_granit', '🗿 Pecahan Granit', 150)">
+                        <span class="item-name">🗿 Pecahan Granit</span>
+                        <span class="item-effect">Batuan keras Gargoyle</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 150 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-ruins" onclick="beliMaterial('mat_serpihan_zirah', '🛡️ Serpihan Zirah Kuno', 200)">
+                        <span class="item-name">🛡️ Serpihan Zirah Kuno</span>
+                        <span class="item-effect">Baja peninggalan ksatria</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 200 Gold</span>
+                    </button>
+
+                    <button class="btn-shop-card border-frost" onclick="beliMaterial('mat_bulu_yeti', '🐻‍❄️ Bulu Yeti Tebal', 300)">
+                        <span class="item-name">🐻‍❄️ Bulu Yeti Tebal</span>
+                        <span class="item-effect">Penahan hawa dingin absolut</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 300 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-frost" onclick="beliMaterial('mat_es_abadi', '🧊 Pecahan Es Abadi', 400)">
+                        <span class="item-name">🧊 Pecahan Es Abadi</span>
+                        <span class="item-effect">Inti tongkat penyihir es</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 400 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-frost" onclick="beliMaterial('mat_esensi_jiwa', '👻 Esensi Jiwa', 500)">
+                        <span class="item-name">👻 Esensi Jiwa</span>
+                        <span class="item-effect">Materi pengikat magis</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 500 Gold</span>
+                    </button>
+
+                    <button class="btn-shop-card border-lava" onclick="beliMaterial('mat_batubara_neraka', '🔥 Batu Bara Neraka', 800)">
+                        <span class="item-name">🔥 Batu Bara Neraka</span>
+                        <span class="item-effect">Bahan pembakar zirah iblis</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 800 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-lava" onclick="beliMaterial('mat_batu_obsidian', '🌋 Batu Obsidian', 1000)">
+                        <span class="item-name">🌋 Batu Obsidian</span>
+                        <span class="item-effect">Material terkeras dari lava</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 1000 Gold</span>
+                    </button>
+                    <button class="btn-shop-card border-boss" onclick="beliMaterial('mat_inti_api_naga', '🐉 Inti Api Naga', 5000)">
+                        <span class="item-name">🐉 Inti Api Naga</span>
+                        <span class="item-effect">Material legendaris BOSS</span>
+                        <span class="item-price"><i class="fa-solid fa-coins"></i> 5000 Gold</span>
+                    </button>
+                </div>
+            </section>
+            </div>
+
+            <div id="sell-panel" style="display: none;">
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../Shared/audio.js"></script>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/boot.js" data-page="toko" data-src="toko.js"></script>
+</body>
+</html>

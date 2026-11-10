@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penempaan - Saga Petualang</title>
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="crafting.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+    <link rel="stylesheet" href="../Shared/journal.css">
+</head>
+<body class="game-ui game-feature">
+    <div class="craft-container ui-shell">
+        <header class="craft-header ui-header">
+            <a id="btn-back" class="btn-leave-craft ui-back" href="../Utama/Index.html"><span aria-hidden="true">&larr;</span> Kembali ke Kota</a>
+            <div class="ui-heading"><h1>MEJA PENEMPAAN</h1>
+            <p id="craft-class"></p>
+            <p>Gold: <strong id="craft-gold">0</strong> · Esensi Universal: <strong id="craft-essence">0</strong></p></div>
+        </header>
+        <nav class="craft-tabs-navigation" aria-label="Mode penempaan">
+            <button id="btn-mode-crafting" class="btn-tab active" data-mode="crafting" aria-pressed="true">Penempaan Peralatan</button>
+            <button id="btn-mode-enhance" class="btn-tab" data-mode="enhance" aria-pressed="false">Enhance</button>
+            <button id="btn-mode-smelting" class="btn-tab" data-mode="smelting" aria-pressed="false">Peleburan</button>
+            <button id="btn-mode-conversion" class="btn-tab" data-mode="conversion" aria-pressed="false">Konversi Material</button>
+        </nav>
+        <main class="craft-goods-panel">
+            <label class="recipe-search">Cari resep Tempa<input id="craft-recipe-search" type="search" placeholder="Nama equipment atau material"></label>
+            <div id="panel-crafting"></div>
+            <section id="panel-enhance" class="craft-booth" hidden>
+                <h4>Enhance Peralatan</h4>
+                <p class="enhance-info">Maksimal +10. Stat naik 25% per level. Peluang sukses menurun dari 90% hingga 25%; kegagalan tetap memakai bahan dan Gold.</p>
+                <div id="enhance-list" class="items-grid"></div>
+            </section>
+            <section id="panel-smelting" class="craft-booth" hidden>
+                <h4>Tungku Peleburan</h4>
+                <div id="smelting-list" class="items-grid"></div>
+            </section>
+            <section id="panel-conversion" class="craft-booth" hidden>
+                <h4>Konversi Drop Monster</h4>
+                <p class="enhance-info">Ubah tumpukan drop di tas menjadi Esensi Universal untuk menempa dan meng-Enhance Jimat Esensi Universal (+20 Max HP) bagi semua kelas. Konversi satu arah, memakai Gold, dan tidak mengambil peralatan yang sudah dipasang.</p>
+                <label class="conversion-quantity">Jumlah per konversi <input id="conversion-quantity" type="number" min="1" step="1" value="1" inputmode="numeric"></label>
+                <div id="conversion-list" class="items-grid"></div>
+            </section>
+        </main>
+        <p id="craft-status" role="status" aria-live="polite"></p>
+    </div>
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/materials.js"></script>
+    <script src="recipes.js"></script>
+    <script src="crafting-core.js"></script>
+    <script src="../Alchemy/recipes.js"></script>
+    <script src="../Shared/equipment-sets.js"></script>
+    <script src="../Shared/journal-core.js"></script>
+    <script src="../Shared/journal-ui.js"></script>
+    <script src="../Shared/boot.js" data-page="crafting" data-src="crafting.js"></script>
+</body>
+</html>

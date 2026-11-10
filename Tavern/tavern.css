@@ -1,0 +1,639 @@
+/* ==========================================================================
+   STYLE KEDAI PETUALANG (TAVERN)
+   ========================================================================== */
+
+:root {
+    --bg-main: #150f0a;
+    --bg-glow: rgba(255, 196, 50, 0.12);
+    --bg-container: rgba(23, 16, 11, 0.95);
+    --bg-card: rgba(33, 22, 16, 0.96);
+    --border-color: rgba(212, 161, 79, 0.18);
+    --text-primary: #f3e3c4;
+    --text-secondary: #b9a385;
+    --accent-gold: #f5c256;
+    --accent-green: #c9af66;
+    --accent-red: #d97a4f;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 18px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    background: radial-gradient(circle at top, rgba(245, 194, 86, 0.08), transparent 25%),
+        linear-gradient(180deg, #22180f 0%, #130d09 46%, #0f0a07 100%);
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 15% 20%, rgba(245, 194, 86, 0.12), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.05), transparent 12%),
+        radial-gradient(circle at 55% 80%, rgba(255, 255, 255, 0.04), transparent 18%);
+    pointer-events: none;
+}
+
+.tavern-container {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 28px;
+    background: var(--bg-container);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
+
+.tavern-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(245, 194, 86, 0.15), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05), transparent 18%);
+    pointer-events: none;
+}
+
+.tavern-header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 24px;
+    padding: 28px 26px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    z-index: 1;
+}
+
+.tavern-title-group {
+    display: grid;
+    gap: 10px;
+}
+
+.tavern-title-group h1 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--accent-gold);
+    text-shadow: 0 0 18px rgba(245, 194, 86, 0.25);
+}
+
+.tavern-title-group p {
+    margin: 0;
+    max-width: 720px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.btn-leave-tavern {
+    align-self: center;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.btn-leave-tavern:hover {
+    transform: translateY(-1px);
+    background: rgba(245, 194, 86, 0.12);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tavern-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+    z-index: 1;
+}
+
+.tavern-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.tab-button {
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.tab-button.active {
+    background: rgba(245,194,86,0.18);
+    border-color: rgba(245,194,86,0.35);
+    color: #fff;
+}
+
+.tab-button:hover {
+    background: rgba(255,255,255,0.07);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#quest-panel {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.quest-card {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.quest-board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 18px 20px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.quest-board-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+.quest-board-header p {
+    margin: 8px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.quest-board-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.quest-reputation-box {
+    background: rgba(201,175,102, 0.12);
+    border: 1px solid rgba(201,175,102, 0.3);
+    padding: 12px 14px;
+    border-radius: 16px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.quest-reputation-box strong {
+    display: block;
+    margin-top: 4px;
+    color: #ffffff;
+}
+
+.btn-refresh-quest {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(245,194,86,0.35);
+    background: rgba(245,194,86,0.14);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-refresh-quest:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+.quest-card.common {
+    border-color: #c9af66;
+}
+
+.quest-card.rare {
+    border-color: #d4bf86;
+}
+
+.quest-card.epic {
+    border-color: #d1ba7b;
+    background: linear-gradient(180deg, rgba(33,22,16,0.9), rgba(49,47,40,0.18));
+}
+
+.quest-card.mythic {
+    border-color: #f97316;
+    background: linear-gradient(180deg, rgba(33,22,16,0.9), rgba(150, 51, 0, 0.18));
+}
+
+.quest-rarity {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.quest-rarity.common {
+    color: #dbca9a;
+    background: rgba(201,175,102, 0.14);
+}
+
+.quest-rarity.rare {
+    color: #e2d4ae;
+    background: rgba(212,191,134, 0.14);
+}
+
+.quest-rarity.epic {
+    color: #ebe2c7;
+    background: rgba(209,186,123, 0.13);
+}
+
+.quest-rarity.mythic {
+    color: #fdba74;
+    background: rgba(249, 115, 22, 0.15);
+}
+
+.quest-card button {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f5c256 0%, #d97706 100%);
+    color: #1f1d19;
+    transition: background 0.2s ease;
+}
+
+.quest-card button:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+}
+
+.quest-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.quest-card small {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.quest-status {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+.quest-progress {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.07);
+    overflow: hidden;
+}
+
+.quest-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-green), #f5c256);
+    transition: width 0.25s ease;
+}
+
+.quest-complete {
+    color: #8a7d58;
+    font-weight: 700;
+}
+
+#tavern-content {
+    display: grid;
+    gap: 22px;
+}
+
+.party-summary {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.party-summary-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent-gold);
+}
+
+.party-summary-values {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.gold-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.gold-label {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.gold-display #player-gold {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.tavern-intro {
+    flex: 1 1 320px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.ally-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.ally-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.12));
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    overflow: hidden;
+}
+
+.ally-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 194, 86, 0.22);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.25);
+}
+
+.ally-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(245, 194, 86, 0.08), transparent 34%);
+    pointer-events: none;
+}
+
+.ally-card.recruited {
+    opacity: 0.88;
+    border-color: rgba(201,175,102, 0.36);
+    filter: saturate(0.95);
+}
+
+.ally-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+}
+
+.ally-icon {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 194, 86, 0.12);
+    color: var(--accent-gold);
+    font-size: 1.65rem;
+}
+
+.ally-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+}
+
+.ally-class {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--accent-gold);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+}
+
+.ally-desc {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    min-height: 72px;
+    z-index: 1;
+}
+
+.ally-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 14px 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item i {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: var(--accent-gold);
+}
+
+.stat-item span {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.ally-xp {
+    display: grid;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.xp-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.xp-bar-container {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #c7ac60, #c8ad63);
+    transition: width 0.25s ease;
+}
+
+.btn-info-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-info-small:hover {
+    background: rgba(245, 194, 86, 0.16);
+    transform: translateY(-1px);
+}
+
+.btn-recruit {
+    width: 100%;
+    padding: 14px 0;
+    border: none;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1b130b;
+    background: linear-gradient(135deg, #f5c256, #ddb74e);
+    box-shadow: 0 12px 28px rgba(245, 194, 86, 0.22);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    z-index: 1;
+}
+
+.btn-recruit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.btn-recruit:disabled {
+    background: rgba(120, 120, 120, 0.2);
+    color: #a8a8a8;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+    .tavern-header {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-leave-tavern {
+        justify-self: start;
+        width: 100%;
+    }
+
+    .tavern-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Sembunyikan konten tab yang tidak aktif */
+#quest-board-wrapper[hidden],
+#ally-list[hidden] {
+    display: none !important;
+}
+
+#quest-board-wrapper[hidden] {
+    display: none !important;
+}
+.ally-health { margin: 8px 0; color: #fca5a5; font-size: 0.85rem; }
+.ally-health progress { display: block; width: 100%; height: 12px; margin-top: 4px; accent-color: #ef4444; }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Petualang - Saga Petualang</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="stylesheet" href="../Utama/fonts.css">
+    <link rel="stylesheet" href="../Shared/vendor/fontawesome/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="tavern.css">
+    <link rel="stylesheet" href="../Shared/theme.css">
+</head>
+
+<body class="game-ui game-feature">
+    <div class="tavern-container ui-shell">
+        <div class="tavern-header ui-header">
+            <div class="tavern-title-group">
+                <h1>Kedai "Cangkir Retak"</h1>
+                <p>Tempat para petualang berkumpul. Rekrut kawan seperjuangan di sini.</p>
+            </div>
+            <button id="btn-back" class="btn-leave-tavern ui-back">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Arena
+            </button>
+        </div>
+
+        <div class="tavern-panel">
+            <div class="gold-display">
+                <span class="gold-label">Emas Anda</span>
+                <span id="player-gold">0</span>
+                <i class="fa-solid fa-coins"></i>
+            </div>
+            <div class="tavern-intro">Rekrut dan kelola anggota party Anda di bawah. Setiap pahlawan membawa gaya dan kekuatan sendiri.</div>
+        </div>
+
+        <div class="tavern-tabs">
+            <button id="tab-recruit" class="tab-button active" type="button">Rekrut</button>
+            <button id="tab-quest" class="tab-button" type="button">Quest</button>
+        </div>
+
+        <div id="tavern-content">
+            <div id="ally-list" class="ally-grid">
+                <!-- Kartu Anggota Party akan di-generate oleh JS -->
+            </div>
+            <div id="quest-board-wrapper">
+                <div class="quest-board-header" hidden>
+                    <div>
+                        <h3>Papan Misi Kedai</h3>
+                        <p>Ambil misi acak dari Kedai. Semakin tinggi reputasi, semakin besar peluang quest langka.</p>
+                    </div>
+                    <div class="quest-board-actions">
+                        <div class="quest-reputation-box">
+                            <div id="quest-reputation-info" class="reputation-title">Level 1 - Pendatang</div>
+                            <div class="rep-progress-bar-container">
+                                <div id="quest-reputation-bar" class="rep-progress-bar-fill"></div>
+                            </div>
+                            <div id="quest-reputation-exp" class="rep-progress-text">
+                                0 / 100 Reputasi
+                            </div>
+                        </div>
+                        <button id="btn-refresh-quests" class="btn-refresh-quest" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i> Refresh Misi (<span id="quest-refresh-cost">10</span> Gold)
+                        </button>
+                    </div>
+                </div>
+                <div id="quest-panel" class="quest-panel"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Shared/vendor/sweetalert2.all.min.js"></script>
+    <script src="../Shared/items.js"></script>
+    <script src="../Shared/allies.js"></script>
+    <script src="../Shared/monsters.js"></script>
+    <script src="../Shared/achievements.js"></script>
+    <script src="../Shared/storage.js"></script>
+    <script src="../Shared/boot.js" data-page="tavern" data-src="tavern.js"></script>
+</body>
+</html>

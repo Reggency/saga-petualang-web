@@ -1,0 +1,440 @@
+/* --- RESET & DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141311; /* Warna background gelap/navy */
+    color: #f4eede;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+/* --- CONTAINER UTAMA --- */
+.inven-container {
+    max-width: 900px; /* Lebar maksimal diperlebar karena single-column */
+    margin: 0 auto;
+    background-color: #201e1a;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    padding: 30px;
+}
+
+/* --- HEADER --- */
+.inven-header {
+    text-align: center;
+    border-bottom: 1px dashed #6b6145;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.inven-header h1 {
+    font-family: 'Cinzel', serif;
+    color: #fbbf24; /* Warna Emas */
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.inven-header p {
+    font-size: 14px;
+    color: #d1ba7b;
+}
+
+/* --- JUDUL KATEGORI --- */
+.main-title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.main-title h3 {
+    font-size: 18px;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.04em;
+}
+
+.main-title.gold-title h3 {
+    color: #fbbf24;
+    text-shadow: 0 0 18px rgba(251,191,36,0.35);
+}
+
+.inventory-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.inventory-tab-btn {
+    background: rgba(209,186,123,0.08);
+    color: #f4eede;
+    border: 1px solid rgba(209,186,123,0.16);
+    border-radius: 999px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.inventory-tab-btn.active,
+.inventory-tab-btn:hover {
+    background: rgba(251,191,36,0.18);
+    border-color: rgba(251,191,36,0.35);
+    color: #f8fafc;
+}
+
+/* --- GRID SYSTEM --- */
+.material-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+/* --- KOTAK ITEM --- */
+.slot-item {
+    background: linear-gradient(180deg, rgba(20,19,17,0.96) 0%, rgba(20,19,17,0.88) 55%, rgba(20,19,17,0.82) 100%);
+    border: 1px solid rgba(209,186,123,0.12);
+    border-radius: 16px;
+    padding: 18px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    min-height: 150px;
+}
+
+.slot-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(209,186,123,0.28);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.34);
+}
+
+.slot-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+/* --- QUANTITY BADGE --- */
+.slot-qty {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(20,19,17,0.88);
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 5px 10px;
+    border: 1px solid rgba(209,186,123,0.2);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    letter-spacing: 0.05em;
+}
+
+/* --- ICON ITEM & WARNA SPESIFIK --- */
+.slot-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.slot-name {
+    font-size: 12px;
+    text-align: center;
+    color: #eadfc2;
+    line-height: 1.3;
+    max-height: 3.6em;
+    overflow: hidden;
+}
+
+.inventory-slot.empty-slot {
+    background: rgba(209,186,123,0.05);
+    border: 2px dashed rgba(209,186,123,0.2);
+    color: rgba(209,186,123,0.85);
+}
+
+.inventory-slot.empty-slot:hover {
+    transform: none;
+    border-color: rgba(251,191,36,0.35);
+    background: rgba(255,255,255,0.04);
+}
+
+.empty-slot-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: rgba(209,186,123,0.65);
+}
+
+.slot-empty-text {
+    font-size: 12px;
+    color: rgba(209,186,123,0.75);
+    text-align: center;
+}
+
+
+.item-tooltip {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    max-width: 240px;
+    padding: 12px 14px;
+    background: rgba(20,19,17,0.96);
+    border: 1px solid rgba(209,186,123,0.22);
+    border-radius: 14px;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.45);
+    color: #f8fafc;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.item-tooltip.show {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+.item-tooltip .tooltip-name {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.item-tooltip .tooltip-category {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(209,186,123,0.12);
+    color: #d1ba7b;
+    font-size: 10px;
+}
+
+.item-tooltip .tooltip-desc {
+    color: #eadfc2;
+}
+
+.rarity-common {
+    border-color: rgba(209,186,123,0.18);
+}
+
+.rarity-rare {
+    border-color: rgba(202,175,103,0.45);
+    box-shadow: 0 0 18px rgba(202,175,103,0.1);
+}
+
+.rarity-epic {
+    border-color: rgba(209,186,123,0.55);
+    box-shadow: 0 0 22px rgba(209,186,123,0.14);
+}
+
+.rarity-legendary {
+    border-color: rgba(251,191,36,0.8);
+    box-shadow: 0 0 25px rgba(251,191,36,0.2);
+}
+
+/* Warna Kustom Berdasarkan Material (Dari Meta Data JS kamu) */
+.c-slime { color: #c7ac61; }    /* Hijau */
+.c-goblin { color: #decea2; }   /* Ungu */
+.c-wolf { color: #fb923c; }     /* Oranye */
+.c-iron { color: #d1ba7b; }     /* Abu-abu */
+.c-granite { color: #ea580c; }  /* Merah Bata */
+.c-ice { color: #c9af67; }      /* Biru Muda */
+.c-dragon { color: #ef4444; }   /* Merah Terang */
+.c-copper { color: #b45309; }   /* Tembaga */
+.c-iron-ore { color: #b1923e; } /* Besi Gelap */
+.c-silver { color: #f4eede; }   /* Perak */
+.c-gold-ore { color: #facc15; } /* Emas */
+.c-titanium { color: #e0d0a5; } /* Titanium Ungu */
+.c-mithril { color: #bd9d44; }  /* Mithril Cyan */
+.c-balsa { color: #d97706; }    /* Kayu Muda */
+.c-pinus { color: #2c2a24; }    /* Kayu Hijau Gelap */
+.c-oak { color: #78350f; }      /* Kayu Gelap */
+.c-ironwood { color: #6a6044; } /* Kayu Keabu-abuan */
+.c-mahoni { color: #991b1b; }   /* Kayu Kemerahan */
+.c-elderwood { color: #7c704f; }/* Kayu Mistis */
+
+/* --- FOOTER & TOMBOL KEMBALI --- */
+.inven-footer {
+    border-top: 1px dashed #6b6145;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.btn-back {
+    background-color: #312e28;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-back:hover {
+    background-color: #6b6145;
+}
+
+/* =========================================================================
+   STYLE UNTUK PENGEPUL MATERIAL (TOKO)
+   ========================================================================= */
+.shop-booth {
+    background-color: #201e1a;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.shop-booth h4 {
+    font-family: 'Cinzel', serif;
+    color: #fbbf24;
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.items-grid {
+    display: grid;
+    /* Membuat grid kartu toko responsif otomatis */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.btn-shop-card {
+    background-color: #141311;
+    color: #f4eede;
+    border: 2px solid #312e28;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-shop-card:hover {
+    transform: translateY(-3px);
+    background-color: #1d1b17;
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #f8fafc;
+    margin-bottom: 2px;
+}
+
+.item-effect {
+    font-size: 11px;
+    color: #d1ba7b;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-size: 12px;
+    color: #facc15; /* Warna Kuning Koin */
+    font-weight: bold;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Pewarnaan Garis Tepi Toko Sesuai Wilayah Grinding */
+.border-forest { border-color: #8d7f5a; }      /* Hijau */
+.border-cave { border-color: #b1923e; }        /* Abu-abu */
+.border-ruins { border-color: #d1ba7b; }       /* Ungu */
+.border-frost { border-color: #c9af67; }       /* Biru Es */
+.border-lava { border-color: #ef4444; }        /* Merah Api */
+.border-boss { border-color: #f59e0b; animation: pulseBorder 2s infinite; } /* Emas Berpendar */
+
+/* Warna Icon Item Baru di Grid Bagian Inventory */
+.c-bat { color: #d1ba7b; }
+.c-spider { color: #eadfc2; }
+.c-poison { color: #8d7f5a; }
+.c-sting { color: #857855; }
+.c-shroud { color: #b45309; }
+.c-armor-shard { color: #b1923e; }
+.c-yeti { color: #faf7f0; }
+.c-soul { color: #decea2; }
+.c-coal { color: #ea580c; }
+.c-obsidian { color: #bd9d45; }
+
+/* Animasi untuk Border Card Boss */
+@keyframes pulseBorder {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+/* --- CUSTOM TOAST NOTIFICATION CONTAINER --- */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- TOAST VISUAL CARD --- */
+.custom-toast {
+    background: rgba(20,19,17, 0.95);
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #312e28;
+}
+
+/* --- ANIMASI MELUNCUR MASUK --- */
+.custom-toast.show {
+    transform: translateX(0);
+}
+
+/* --- VARIASI WARNA BORDER KIRI --- */
+.custom-toast.success { border-left: 4px solid #b99941; }
+.custom-toast.danger { border-left: 4px solid #ef4444; }
+.custom-toast.info { border-left: 4px solid #fbbf24; }
+
+.custom-toast i {
+    font-size: 16px;
+}
+.potion-supplies { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 24px; }
+.potion-supplies > div { flex: 1; min-width: 180px; display: grid; gap: 5px; padding: 16px; border: 1px solid #62593f; border-radius: 8px; background: #141311; }
+.potion-supplies span { color: #d8c48d; }
+.potion-supplies strong { font-size: 24px; color: #e5a19b; }
+.potion-supplies > div:last-child strong { color: #e0d0a6; }
+.potion-supplies small { color: #d3bd81; }
